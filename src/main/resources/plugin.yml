@@ -1,0 +1,24 @@
+name: ServerPlugin
+version: '${project.version}'
+main: de.yoshi.serverplugin.Main
+api-version: 1.19
+authors: [ Yoshi_der_Bauer ]
+description: Ein Server Plugin für Survival Server!
+
+commands:
+  afk:
+    description: Damit kannst du dich als AFK makieren.
+  lobby:
+    description: Damit kannst du dich in einem Servernetzwerk zur Lobby teleportieren.
+    aliases: ["hub"]
+  start:
+    description: Damit kann der Admin den Server eröffnen.
+    permission: op
+    permission-message: Du hast keine Berechtigungen diesen Command auszuführen.
+  uhrzeit:
+    description: Damit kannst du die aktulle Uhrzeit anzeigen lassen.
+    aliases: ["zeit"]
+  ticks:
+    description: Damit kannst du die Server TPS anzeigen lassen.
+  ping:
+    description: Damit kannst du deinen Ping anzeigen lassen.
