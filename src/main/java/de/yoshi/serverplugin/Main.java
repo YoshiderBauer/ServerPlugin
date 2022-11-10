@@ -101,7 +101,7 @@ public final class Main extends JavaPlugin {
         if(!config.contains("BundleRecipe"))config.set("BundleRecipe", true);
         if(!config.contains("Start"))config.set("Start", false);
         if(!config.contains("CustomChat"))config.set("CustomChat", true);
-        if(!config.contains("Auto-Restart Delay"))config.set("Auto-Restart delay", 120);
+        if(!config.contains("Auto-Restart delay"))config.set("Auto-Restart delay", 120);
         config.saveConfig();
         if(!afk.contains("Description"))afk.set("Description", "Hier werden die AFK Spieler gespeichert.");
         afk.saveConfig();
