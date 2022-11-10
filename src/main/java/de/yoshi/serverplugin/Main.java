@@ -3,6 +3,7 @@ package de.yoshi.serverplugin;
 import de.yoshi.serverplugin.commands.*;
 import de.yoshi.serverplugin.listener.*;
 import de.yoshi.serverplugin.utils.fileconfig;
+import de.yoshi.serverplugin.utils.restart;
 import de.yoshi.serverplugin.utils.tpsUtils;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -25,6 +26,7 @@ public final class Main extends JavaPlugin {
 
     static fileconfig config = new fileconfig("config.yml");
     static fileconfig afk = new fileconfig("afk.yml");
+    public long lastStart;
     public static String PREFIX; //default: §7| §f§lSurvival Server §l§7x§a
     public static String NOPERMISSION = "§cDu hast keine Berechtigung diesen Command auszuführen!";
 
@@ -57,6 +59,7 @@ public final class Main extends JavaPlugin {
             if(!afk.contains(all.getName())) afk.set(all.getName(), false);
             afk.saveConfig();
         }
+        lastStart = System.currentTimeMillis();
 
         log("Das Plugin wurde geladen.");
         if(config.getString("PREFIX") == null) log("§c§lDer Server muss neugestartet werden!");
@@ -98,6 +101,7 @@ public final class Main extends JavaPlugin {
         if(!config.contains("BundleRecipe"))config.set("BundleRecipe", true);
         if(!config.contains("Start"))config.set("Start", false);
         if(!config.contains("CustomChat"))config.set("CustomChat", true);
+        if(!config.contains("Auto-Restart Delay"))config.set("Auto-Restart delay", 120);
         config.saveConfig();
         if(!afk.contains("Description"))afk.set("Description", "Hier werden die AFK Spieler gespeichert.");
         afk.saveConfig();
@@ -120,6 +124,7 @@ public final class Main extends JavaPlugin {
         if (config.getBoolean("lobby")) Bukkit.getPluginCommand("lobby").setExecutor(new lobbyCommand());
         //Scheduler:
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new tpsUtils(), 100L, 1L);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new restart(this), 0, 1200);
     }
 
     public static void sendServer(Player player, String server) {
