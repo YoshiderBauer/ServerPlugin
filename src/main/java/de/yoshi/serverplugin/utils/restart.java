@@ -28,7 +28,7 @@ public class restart implements Runnable{
         uptime = currentMillies - Main.INSTANCE.lastStart;
         seconds = uptime / 1000;
         minutes = seconds / 60;
-        if(minutes < (autoRestartDelay - 5)){
+        if(minutes > (autoRestartDelay - 5)){
             AtomicInteger counterMinutes = new AtomicInteger(5);
             Bukkit.getScheduler().runTaskTimer(plugin,() -> {
                 if(counterMinutes.get() > 1){
@@ -43,7 +43,7 @@ public class restart implements Runnable{
                     Main.log("Der Server wird in einer Minute neugestartet!");
                 }
 
-                if(minutes < (autoRestartDelay - 0.5)){
+                if(minutes > (autoRestartDelay - 0.5)){
                     AtomicInteger counterSeconds = new AtomicInteger(30);
                     Bukkit.getScheduler().runTaskTimer(plugin,() -> {
 
@@ -54,7 +54,7 @@ public class restart implements Runnable{
                         counterSeconds.getAndDecrement();
 
                         if(counterSeconds.get() == 0){
-                            Bukkit.getServer().spigot().restart();
+                            Bukkit.getServer().shutdown();
                         }
                     },0,20);
                 }
