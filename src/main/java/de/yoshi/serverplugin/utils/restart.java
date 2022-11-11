@@ -45,35 +45,38 @@ public class restart implements Runnable{
                     player.sendMessage(Main.PREFIX + "§cDer Server wird in " + counterMinutes.get() + " Minuten neugestartet!");
                 }
                 Main.log("§cDer Server wird in " + counterMinutes.get() + " Minuten neugestartet!");
-            } else {
+            }
+
+
+            if(counterMinutes.get() == 1){
                 for(Player player : Bukkit.getOnlinePlayers()){
                     player.sendMessage(Main.PREFIX + "§cDer Server wird in einer Minute neugestartet!");
                 }
                 Main.log("§cDer Server wird in einer Minute neugestartet!");
-            }
-            counterMinutes.getAndDecrement();
-            if(minutes >= (autoRestartDelay - 0.5)){
-                AtomicInteger counterSeconds = new AtomicInteger(30);
+                AtomicInteger counterSeconds = new AtomicInteger(60);
                 Bukkit.getScheduler().runTaskTimer(plugin,() -> {
-
-                    if(counterSeconds.get() > 1){
-                        for(Player player : Bukkit.getOnlinePlayers()){
-                            player.sendMessage(Main.PREFIX + "§cDer Server wird in " + counterSeconds.get() + " Sekunden neugestartet!");
+                    if(counterSeconds.get() < 31){
+                        if(counterSeconds.get() > 1){
+                            for(Player player : Bukkit.getOnlinePlayers()){
+                                player.sendMessage(Main.PREFIX + "§cDer Server wird in " + counterSeconds.get() + " Sekunden neugestartet!");
+                            }
+                            Main.log("§cDer Server wird in " + counterSeconds.get() + " Sekunden neugestartet!");
+                        } else if(counterSeconds.get() == 1) {
+                            for(Player player : Bukkit.getOnlinePlayers()){
+                                player.sendMessage(Main.PREFIX + "§cDer Server wird in einer Sekunde neugestartet!");
+                            }
+                            Main.log("§cDer Server wird in einer Sekunde neugestartet!");
                         }
-                        Main.log("§cDer Server wird in " + counterSeconds.get() + " Sekunden neugestartet!");
-                    } else {
-                        for(Player player : Bukkit.getOnlinePlayers()){
-                            player.sendMessage(Main.PREFIX + "§cDer Server wird in einer Sekunde neugestartet!");
-                        }
-                        Main.log("§cDer Server wird in einer Sekunde neugestartet!");
                     }
                     counterSeconds.getAndDecrement();
+
 
                     if(counterSeconds.get() == 0){
                         Bukkit.getServer().shutdown();
                     }
                 },0,20);
             }
+            counterMinutes.getAndDecrement();
         }, 0, 1200);
     }
 }
