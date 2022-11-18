@@ -1,5 +1,6 @@
 package de.yoshi.serverplugin.listener;
 
+import de.yoshi.serverplugin.Main;
 import de.yoshi.serverplugin.commands.timeCommand;
 import de.yoshi.serverplugin.utils.fileconfig;
 import de.yoshi.serverplugin.utils.tpsUtils;
@@ -16,9 +17,9 @@ public class PlayerList implements Runnable{
     String Ping;
     int ping;
     String tpsF;
-    int totalRAM;
-    int ramUsage;
-    int ramAvailable;
+    long totalRAM;
+    long ramUsage;
+    long ramAvailable;
     String Ram;
     @Override
     public void run() {
@@ -49,11 +50,19 @@ public class PlayerList implements Runnable{
             }
             Uhrzeit = "§a§lUhrzeit: §r" + localDateTime.format(dateTimeFormatter);
             Runtime r = Runtime.getRuntime();
-            totalRAM = (int) r.totalMemory() / 1024 / 1024;
-            ramAvailable = (int) r.freeMemory() / 1024 / 1024;
-            ramUsage = totalRAM - ramAvailable;
-            Ram = "§a§lArbeitsspeicher:§r§l " + ramUsage + "§r MB von §l" + totalRAM + "§r MB verwendet";
-            player.setPlayerListFooter("\n" + Uhrzeit + tpsF + Ping + /*"\n" + Ram +*/"\n");
+            totalRAM = r.maxMemory() / 1048576;
+            ramAvailable = r.freeMemory() / 1048576;
+            ramUsage = ramAvailable / totalRAM;
+            //Main.log(ramUsage +" " + totalRAM + " " + ramAvailable);
+            //Ram = "§a§lArbeitsspeicher:§r§l " + ramUsage + "§r MB von §l" + totalRAM + "§r MB verwendet";
+            if(ramUsage <= 0.7) {
+                Ram = " §a§lRAM: §r" + (ramUsage * 100) + " %";
+            } else if (ramUsage > 0.7 && ramUsage <= 0.9) {
+                Ram = " §6§lRAM: §r" + (ramUsage * 100) + " %";
+            } else {
+                Ram = " §c§lRAM: §r" + (ramUsage * 100) + " %";
+            }
+            player.setPlayerListFooter("\n" + Uhrzeit + tpsF + Ping + "\n" + Ram + "\n");
             fileconfig afk = new fileconfig("afk.yml");
             if(afk.getBoolean(player.getName())){
                 player.setPlayerListName("§7[AFK] " + player.getName());
