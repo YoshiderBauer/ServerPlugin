@@ -12,6 +12,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public class timeCommand implements CommandExecutor {
+    public static String Zeit;
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Clock clock = Clock.system(ZoneId.of("Europe/Berlin"));
@@ -24,6 +25,7 @@ public class timeCommand implements CommandExecutor {
         }
         Player player = (Player) sender;
         player.sendMessage(Main.PREFIX + "Es ist " + localDateTime.format(dateTimeFormatter) + " Uhr am " + localDateTime.format(dateTimeFormatter1) + "!");
+        Zeit = localDateTime.format(dateTimeFormatter) + " Uhr";
         return true;
     }
 }

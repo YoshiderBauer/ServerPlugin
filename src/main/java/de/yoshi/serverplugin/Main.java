@@ -125,6 +125,7 @@ public final class Main extends JavaPlugin {
         //Scheduler:
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new tpsUtils(), 100L, 1L);
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new restart(this), 0, 1200);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this,new PlayerList(), 0, 20);
     }
 
     public static void sendServer(Player player, String server) {
