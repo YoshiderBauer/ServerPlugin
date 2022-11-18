@@ -19,7 +19,7 @@ public class joinQuitListener implements Listener {
     @EventHandler
     private void playerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        player.setPlayerListHeader("            " + Main.PREFIX + "         ");
+        player.setPlayerListHeader("\n            " + Main.PREFIX + "         \n");
         player.setPlayerListFooter(" ");
 
         event.setJoinMessage(Main.PREFIX + "§a" + player.getDisplayName() + " §7hat den Server betreten.");
