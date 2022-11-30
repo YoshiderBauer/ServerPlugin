@@ -1,21 +1,39 @@
 package de.yoshi.serverplugin;
 
+import com.google.common.collect.Multimap;
 import de.yoshi.serverplugin.commands.*;
 import de.yoshi.serverplugin.listener.*;
+import de.yoshi.serverplugin.utils.ItemBuilder;
 import de.yoshi.serverplugin.utils.fileconfig;
 import de.yoshi.serverplugin.utils.restart;
 import de.yoshi.serverplugin.utils.tpsUtils;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.item.Items;
 import org.bukkit.*;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.craftbukkit.v1_19_R1.inventory.CraftItemStack;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.tags.CustomItemTagContainer;
+import org.bukkit.material.MaterialData;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public final class Main extends JavaPlugin {
     public static Main INSTANCE;
@@ -81,6 +99,18 @@ public final class Main extends JavaPlugin {
             BundleRecipe.setIngredient('H', Material.RABBIT_HIDE);
             Bukkit.addRecipe(BundleRecipe);
         }
+
+        if(config.getBoolean("LightRecipe")){
+            //Light Block
+            ItemStack LightBlock = new ItemStack(Material.LIGHT);
+            LightBlock.setAmount(2);
+            NamespacedKey key1 = new NamespacedKey(this, "Light");
+            ShapedRecipe BundleRecipe = new ShapedRecipe(key1, LightBlock);
+            BundleRecipe.shape("GGG", "GTG", "GGG");
+            BundleRecipe.setIngredient('G', Material.GLASS_PANE);
+            BundleRecipe.setIngredient('T', Material.TORCH);
+            Bukkit.addRecipe(BundleRecipe);
+        }
     }
 
     private void setFiles() {
@@ -99,6 +129,8 @@ public final class Main extends JavaPlugin {
         if(!config.contains("SpawnElytraBoost"))config.set("SpawnElytraBoost", 5);
         if(!config.contains("SpawnRadius"))config.set("SpawnRadius", 45);
         if(!config.contains("BundleRecipe"))config.set("BundleRecipe", true);
+        if(!config.contains("LightRecipe"))config.set("LightRecipe", true);
+        if(!config.contains("InvisItemFrame"))config.set("InvisItemFrame", true);
         if(!config.contains("Start"))config.set("Start", false);
         if(!config.contains("CustomChat"))config.set("CustomChat", true);
         if(!config.contains("Auto-Restart delay"))config.set("Auto-Restart delay", 120);
@@ -113,6 +145,7 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new joinQuitListener(), this);
         pluginManager.registerEvents(new serverPing(), this);
         pluginManager.registerEvents(new gameModeListener(this), this);
+        if(config.getBoolean("InvisItemFrame")) pluginManager.registerEvents(new rightClickListener(), this);
         if(config.getBoolean("CustomChat")) pluginManager.registerEvents(new chatListener(), this);
         if(config.getBoolean("SpawnElytra")) pluginManager.registerEvents(new SpawnElytra(this), this);
         //Commands:

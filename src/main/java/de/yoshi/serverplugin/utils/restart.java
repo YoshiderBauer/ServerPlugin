@@ -73,6 +73,7 @@ public class restart implements Runnable{
 
                     if(counterSeconds.get() == 0){
                         Bukkit.getServer().shutdown();
+                        //Bukkit.spigot().restart();
                     }
                 },0,20);
             }
