@@ -71,7 +71,7 @@ public class SpawnElytra implements Listener {
     @EventHandler
     public void onSwapItemEvent(PlayerSwapHandItemsEvent event){
         Player player = event.getPlayer();
-        if(boosted.contains(player) || !player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType().isAir() || !player.isGliding()) return;
+        if(boosted.contains(player) || !player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType().isAir() || !player.isGliding() || !flying.contains(player)) return;
         event.setCancelled(true);
         boosted.add(player);
 

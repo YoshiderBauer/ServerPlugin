@@ -49,20 +49,20 @@ public class PlayerList implements Runnable{
                 Ping = " §c§lPing:§r " + ping;
             }
             Uhrzeit = "§a§lUhrzeit: §r" + localDateTime.format(dateTimeFormatter);
-            Runtime r = Runtime.getRuntime();
-            totalRAM = r.maxMemory() / 1048576;
-            ramAvailable = r.freeMemory() / 1048576;
-            ramUsage = ramAvailable / totalRAM;
+            //Runtime r = Runtime.getRuntime();
+            //totalRAM = r.maxMemory() / 1048576;
+            //ramAvailable = r.freeMemory() / 1048576;
+            //ramUsage = ramAvailable / totalRAM;
             //Main.log(ramUsage +" " + totalRAM + " " + ramAvailable);
             //Ram = "§a§lArbeitsspeicher:§r§l " + ramUsage + "§r MB von §l" + totalRAM + "§r MB verwendet";
-            if(ramUsage <= 0.7) {
-                Ram = " §a§lRAM: §r" + (ramUsage * 100) + " %";
-            } else if (ramUsage > 0.7 && ramUsage <= 0.9) {
-                Ram = " §6§lRAM: §r" + (ramUsage * 100) + " %";
-            } else {
-                Ram = " §c§lRAM: §r" + (ramUsage * 100) + " %";
-            }
-            player.setPlayerListFooter("\n" + Uhrzeit + tpsF + Ping + "\n" + Ram + "\n");
+            //if(ramUsage <= 0.7) {
+            //    Ram = " §a§lRAM: §r" + (ramUsage * 100) + " %";
+            //} else if (ramUsage > 0.7 && ramUsage <= 0.9) {
+            //    Ram = " §6§lRAM: §r" + (ramUsage * 100) + " %";
+            //} else {
+             //   Ram = " §c§lRAM: §r" + (ramUsage * 100) + " %";
+            //}
+            player.setPlayerListFooter("\n" + Uhrzeit + tpsF + Ping + "\n" /*+ Ram + "\n"*/);
             fileconfig afk = new fileconfig("afk.yml");
             if(afk.getBoolean(player.getName())){
                 player.setPlayerListName("§7[AFK] " + player.getName());
