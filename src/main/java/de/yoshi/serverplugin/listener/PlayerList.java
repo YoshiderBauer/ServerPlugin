@@ -28,7 +28,7 @@ public class PlayerList implements Runnable{
             Clock clock = Clock.system(ZoneId.of("Europe/Berlin"));
             LocalDateTime localDateTime = LocalDateTime.now(clock);
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-            DateTimeFormatter dateTimeFormatter1 = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+            //LocalDateTime localDateTime1 = LocalDateTime.of(localDateTime.getYear(),localDateTime.getMonthValue(), localDateTime.getDayOfMonth(), 17, 22);
             int TPS = (int) tpsUtils.getTPS();
             if(TPS >= 20){
                 TPS = 20;
@@ -42,11 +42,11 @@ public class PlayerList implements Runnable{
             }
             ping = player.getPing();
             if(ping <= 50){
-                Ping = " §a§lPing:§r " + ping;
+                Ping = " §a§lPing:§r " + ping + " §a§lms";
             } else if (ping > 50 && ping <= 100) {
-                Ping = " §6§lPing:§r " + ping;
+                Ping = " §6§lPing:§r " + ping + " §6§lms";
             } else {
-                Ping = " §c§lPing:§r " + ping;
+                Ping = " §c§lPing:§r " + ping + " §c§lms";
             }
             Uhrzeit = "§a§lUhrzeit: §r" + localDateTime.format(dateTimeFormatter);
             //Runtime r = Runtime.getRuntime();
