@@ -1,6 +1,7 @@
 package de.yoshi.serverplugin.listener;
 
 import de.yoshi.serverplugin.Main;
+import de.yoshi.serverplugin.utils.configUtils;
 import de.yoshi.serverplugin.utils.fileconfig;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -11,9 +12,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class joinQuitListener implements Listener {
     @EventHandler
@@ -31,12 +29,12 @@ public class joinQuitListener implements Listener {
             afk.saveConfig();
         }
 
-        if(!afk.getBoolean(player.getName()) && player.hasPermission("op")){
+        if(!configUtils.getBoolean(afk, player.getName(), false) && player.hasPermission("op")){
             player.setPlayerListName("[§cADMIN§f] " + player.getName());
-        } else if (afk.getBoolean(player.getName())) {
+        } else if (configUtils.getBoolean(afk, player.getName(), false)) {
             player.setPlayerListName("§7[AFK] " + player.getName());
             player.sendMessage(Main.PREFIX + "§7Du bist noch AFK!");
-        } else if (!afk.getBoolean(player.getName()) && !player.hasPermission("op")){
+        } else if (!configUtils.getBoolean(afk, player.getName(), false) && !player.hasPermission("op")){
             player.setPlayerListName("[§aPlayer§f] " + player.getName());
         }
 

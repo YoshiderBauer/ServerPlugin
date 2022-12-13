@@ -1,7 +1,6 @@
 package de.yoshi.serverplugin.listener;
 
 import de.yoshi.serverplugin.Main;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

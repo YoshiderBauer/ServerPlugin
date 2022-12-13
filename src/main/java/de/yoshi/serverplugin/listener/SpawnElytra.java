@@ -1,6 +1,6 @@
 package de.yoshi.serverplugin.listener;
 
-import de.yoshi.serverplugin.Main;
+import de.yoshi.serverplugin.utils.configUtils;
 import de.yoshi.serverplugin.utils.fileconfig;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -15,7 +15,6 @@ import org.bukkit.event.entity.EntityToggleGlideEvent;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +27,8 @@ public class SpawnElytra implements Listener {
 
     public SpawnElytra(Plugin plugin){
         fileconfig config = new fileconfig("config.yml");
-        this.multiplyValue = config.getInt("SpawnElytraBoost");
-        this.spawnRadius = config.getInt("SpawnRadius");
+        this.multiplyValue = configUtils.getInt(config, "SpawnElytraBoost", 5);
+        this.spawnRadius = configUtils.getInt(config,"SpawnRadius", 45);
 
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             Bukkit.getWorld("world").getPlayers().forEach(player -> {

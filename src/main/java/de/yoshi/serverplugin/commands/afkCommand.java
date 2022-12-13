@@ -2,6 +2,7 @@ package de.yoshi.serverplugin.commands;
 
 import de.yoshi.serverplugin.Main;
 import de.yoshi.serverplugin.utils.fileconfig;
+import de.yoshi.serverplugin.utils.configUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -23,7 +24,7 @@ public class afkCommand implements CommandExecutor {
             afk.saveConfig();
         }
 
-        if(!afk.getBoolean(player.getName())){
+        if(!configUtils.getBoolean(afk, player.getName(), false)){
             player.setPlayerListName("§7[AFK] " + player.getName());
             player.sendMessage(Main.PREFIX + "§7Du bist nun AFK!");
 
@@ -33,7 +34,7 @@ public class afkCommand implements CommandExecutor {
             afk.set(player.getName(), true);
             afk.saveConfig();
             return true;
-        } else if (afk.getBoolean(player.getName()) && player.hasPermission("op")){
+        } else if (configUtils.getBoolean(afk, player.getName(), false) && player.hasPermission("op")){
             player.setPlayerListName("[§cADMIN§f] " + player.getName());
             player.sendMessage(Main.PREFIX + "§7Du bist nun nicht mehr AFK!");
             afk.set(player.getName(), false);

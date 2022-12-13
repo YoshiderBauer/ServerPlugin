@@ -1,9 +1,8 @@
 package de.yoshi.serverplugin.listener;
 
-import de.yoshi.serverplugin.Main;
-import de.yoshi.serverplugin.commands.timeCommand;
 import de.yoshi.serverplugin.utils.fileconfig;
 import de.yoshi.serverplugin.utils.tpsUtils;
+import de.yoshi.serverplugin.utils.configUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -28,7 +27,6 @@ public class PlayerList implements Runnable{
             Clock clock = Clock.system(ZoneId.of("Europe/Berlin"));
             LocalDateTime localDateTime = LocalDateTime.now(clock);
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-            //LocalDateTime localDateTime1 = LocalDateTime.of(localDateTime.getYear(),localDateTime.getMonthValue(), localDateTime.getDayOfMonth(), 17, 22);
             int TPS = (int) tpsUtils.getTPS();
             if(TPS >= 20){
                 TPS = 20;
@@ -62,12 +60,12 @@ public class PlayerList implements Runnable{
             //} else {
              //   Ram = " §c§lRAM: §r" + (ramUsage * 100) + " %";
             //}
-            player.setPlayerListFooter("\n" + Uhrzeit + tpsF + Ping + "\n" /*+ Ram + "\n"*/);
+            player.setPlayerListFooter("\n     " + Uhrzeit + tpsF + Ping + "     \n" /*+ Ram + "\n"*/);
             fileconfig afk = new fileconfig("afk.yml");
-            if(afk.getBoolean(player.getName())){
+            if(configUtils.getBoolean(afk, player.getName(), false)){
                 player.setPlayerListName("§7[AFK] " + player.getName());
                 return;
-            } else if (player.isOp() && !(afk.getBoolean(player.getName()))){
+            } else if (player.isOp() && !(configUtils.getBoolean(afk, player.getName(), false))){
                 player.setPlayerListName("[§cADMIN§f] " + player.getName());
                 return;
             } else {

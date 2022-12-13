@@ -1,6 +1,7 @@
 package de.yoshi.serverplugin.commands;
 
 import de.yoshi.serverplugin.Main;
+import de.yoshi.serverplugin.utils.configUtils;
 import de.yoshi.serverplugin.utils.fileconfig;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
@@ -21,7 +22,7 @@ public class startCommand implements CommandExecutor {
         if(!player.hasPermission("op")){
             Main.log(Main.NOPERMISSION); return true;}
         fileconfig config = new fileconfig("config.yml");
-        if(config.getBoolean("Start")){player.sendMessage(Main.PREFIX + "§cDas Event wurde bereits gestartet."); return true;}
+        if(configUtils.getBoolean(config, "Start", false)) {player.sendMessage(Main.PREFIX + "§cDas Event wurde bereits gestartet."); return true;}
 
         config.set("Start", true);
         config.saveConfig();
