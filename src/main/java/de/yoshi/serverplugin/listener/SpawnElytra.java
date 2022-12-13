@@ -70,7 +70,8 @@ public class SpawnElytra implements Listener {
     @EventHandler
     public void onSwapItemEvent(PlayerSwapHandItemsEvent event){
         Player player = event.getPlayer();
-        if(boosted.contains(player) || !player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType().isAir() || !player.isGliding() || !flying.contains(player)) return;
+        fileconfig config = new fileconfig("config.yml");
+        if(boosted.contains(player) || !player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType().isAir() || !player.isGliding() || !flying.contains(player) || configUtils.getInt(config,"SpawnElytraBoost", 5) == 0) return;
         event.setCancelled(true);
         boosted.add(player);
 
