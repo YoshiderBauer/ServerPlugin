@@ -10,16 +10,13 @@ import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class PlayerList implements Runnable{
     String Uhrzeit;
     String Ping;
     int ping;
     String tpsF;
-    long totalRAM;
-    long ramUsage;
-    long ramAvailable;
-    String Ram;
     @Override
     public void run() {
         for (Player player : Bukkit.getOnlinePlayers()){
@@ -47,29 +44,33 @@ public class PlayerList implements Runnable{
                 Ping = " §c§lPing:§r " + ping + " §c§lms";
             }
             Uhrzeit = "§a§lUhrzeit: §r" + localDateTime.format(dateTimeFormatter);
-            //Runtime r = Runtime.getRuntime();
-            //totalRAM = r.maxMemory() / 1048576;
-            //ramAvailable = r.freeMemory() / 1048576;
-            //ramUsage = ramAvailable / totalRAM;
-            //Main.log(ramUsage +" " + totalRAM + " " + ramAvailable);
-            //Ram = "§a§lArbeitsspeicher:§r§l " + ramUsage + "§r MB von §l" + totalRAM + "§r MB verwendet";
-            //if(ramUsage <= 0.7) {
-            //    Ram = " §a§lRAM: §r" + (ramUsage * 100) + " %";
-            //} else if (ramUsage > 0.7 && ramUsage <= 0.9) {
-            //    Ram = " §6§lRAM: §r" + (ramUsage * 100) + " %";
-            //} else {
-             //   Ram = " §c§lRAM: §r" + (ramUsage * 100) + " %";
-            //}
-            player.setPlayerListFooter("\n     " + Uhrzeit + tpsF + Ping + "     \n" /*+ Ram + "\n"*/);
-            fileconfig afk = new fileconfig("afk.yml");
-            if(configUtils.getBoolean(afk, player.getName(), false)){
-                player.setPlayerListName("§7[AFK] " + player.getName());
-                return;
-            } else if (player.isOp() && !(configUtils.getBoolean(afk, player.getName(), false))){
-                player.setPlayerListName("[§cADMIN§f] " + player.getName());
-                return;
-            } else {
-                player.setPlayerListName("[§aPlayer§f] " + player.getName());
+            player.setPlayerListFooter("\n     " + Uhrzeit + tpsF + Ping + "     \n");
+            fileconfig status = new fileconfig("status.yml");
+
+            String arg = configUtils.getString(status, player.getName(), "reset");
+
+            if(Objects.equals(arg, "afk")){
+                player.setPlayerListName("§7[AFK] " + player.getName() + "§r");
+            } else if (Objects.equals(arg, "reset")){
+                if(player.hasPermission("op")){
+                    player.setPlayerListName("[§cADMIN§f] " + player.getName());
+                } else {
+                    player.setPlayerListName("[§aPlayer§f] " + player.getName());
+                }
+            } else if (Objects.equals(arg, "Roleplay")){
+                player.setPlayerListName("[§5RP§f] " + player.getName());
+            } else if (Objects.equals(arg, "Redstone")){
+                player.setPlayerListName("[§cREDSTONE§f] " + player.getName());
+            } else if (Objects.equals(arg, "pog")){
+                player.setPlayerListName("[§2POG§f] " + player.getName());
+            } else if (Objects.equals(arg, "Livestream")) {
+                player.setPlayerListName("[§9LIVE§f] " + player.getName());
+            } else if (Objects.equals(arg, "Aufnahme")) {
+                player.setPlayerListName("[§cREC§f] " + player.getName());
+            } else if (Objects.equals(arg, "Kingsmen")) {
+                player.setPlayerListName("[§6Kingsmen§f] " + player.getName());
+            } else if (Objects.equals(arg, "Troll")) {
+                player.setPlayerListName("[§dTroll§f] " + player.getName());
             }
         }
     }

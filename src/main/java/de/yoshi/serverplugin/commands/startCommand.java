@@ -10,10 +10,14 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffectType;
 
-public class startCommand implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
+
+public class startCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(!(sender instanceof Player)){
@@ -44,5 +48,10 @@ public class startCommand implements CommandExecutor {
         }
         player.sendMessage(Main.PREFIX + "§aDas Event wurde erfolgreich gestartet!");
         return true;
+    }
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        return list;
     }
 }

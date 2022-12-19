@@ -6,8 +6,6 @@ authors: [ Yoshi_der_Bauer ]
 description: Ein Server Plugin für Survival Server!
 
 commands:
-  afk:
-    description: Damit kannst du dich als AFK makieren.
   lobby:
     description: Damit kannst du dich in einem Servernetzwerk zur Lobby teleportieren.
     aliases: ["hub"]
@@ -22,3 +20,6 @@ commands:
     description: Damit kannst du die Server TPS anzeigen lassen.
   ping:
     description: Damit kannst du deinen Ping anzeigen lassen.
+  status:
+    description: Damit kannst du deinen Status festlegen.
+    usage: <Status>

@@ -9,6 +9,6 @@ public class chatListener implements Listener {
     @EventHandler
     private void ChatListener(AsyncPlayerChatEvent event){
         Player player = event.getPlayer();
-        event.setFormat(player.getName() + "§7 | §F" + event.getMessage());
+        event.setFormat(player.getDisplayName() + " §70000|§r " + event.getMessage());
     }
 }

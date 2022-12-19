@@ -5,9 +5,13 @@ import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-public class lobbyCommand implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
+
+public class lobbyCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(!(sender instanceof Player)) {
@@ -19,5 +23,11 @@ public class lobbyCommand implements CommandExecutor {
         Main.sendServer(player, "Lobby");
 
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        return list;
     }
 }

@@ -22,20 +22,55 @@ public class joinQuitListener implements Listener {
 
         event.setJoinMessage(Main.PREFIX + "§a" + player.getDisplayName() + " §7hat den Server betreten.");
 
-        fileconfig afk = new fileconfig("afk.yml");
+        fileconfig status = new fileconfig("status.yml");
 
-        if(!afk.contains(player.getName())) {
-            afk.set(player.getName(), false);
-            afk.saveConfig();
+        if(!status.contains(player.getName())) {
+            status.set(player.getName(), "reset");
+            status.saveConfig();
         }
 
-        if(!configUtils.getBoolean(afk, player.getName(), false) && player.hasPermission("op")){
-            player.setPlayerListName("[§cADMIN§f] " + player.getName());
-        } else if (configUtils.getBoolean(afk, player.getName(), false)) {
+        String arg = configUtils.getString(status, player.getName(), "reset");
+
+        if(arg.equals("afk")){
+            player.sendMessage(Main.PREFIX + "§rDu bist immernoch §7§lAFK§r!");
             player.setPlayerListName("§7[AFK] " + player.getName());
-            player.sendMessage(Main.PREFIX + "§7Du bist noch AFK!");
-        } else if (!configUtils.getBoolean(afk, player.getName(), false) && !player.hasPermission("op")){
-            player.setPlayerListName("[§aPlayer§f] " + player.getName());
+            player.setDisplayName("§7[AFK§f] " + player.getName() + "§r");
+        } else if (arg.equals("reset")){
+            if(player.hasPermission("op")){
+                player.setPlayerListName("[§cADMIN§f] " + player.getName());
+                player.setDisplayName("[§cADMIN§f] " + player.getName());
+            } else {
+                player.setPlayerListName("[§aPlayer§f] " + player.getName());
+                player.setDisplayName("[§aPlayer§f] " + player.getName());
+            }
+        } else if (arg.equals("Roleplay")){
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §5§lRoleplay§r!");
+            player.setPlayerListName("[§5RP§f] " + player.getName());
+            player.setDisplayName("[§5RP§f] " + player.getName());
+        } else if (arg.equals("Redstone")){
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §c§lRedstone§r!");
+            player.setPlayerListName("[§cREDSTONE§f] " + player.getName());
+            player.setDisplayName("[§cREDSTONE§f] " + player.getName());
+        } else if (arg.equals("pog")){
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §2§lPog§r!");
+            player.setPlayerListName("[§2POG§f] " + player.getName());
+            player.setDisplayName("[§2POG§f] " + player.getName());
+        } else if (arg.equals("Livestream")) {
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §9§lLivestream§r!");
+            player.setPlayerListName("[§9LIVE§f] " + player.getName());
+            player.setDisplayName("[§9LIVE§f] " + player.getName());
+        } else if (arg.equals("Aufnahme")) {
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §c§lAufnahme§r!");
+            player.setPlayerListName("[§cREC§f] " + player.getName());
+            player.setDisplayName("[§cREC§f] " + player.getName());
+        } else if (arg.equals("Kingsmen")) {
+            player.sendMessage(Main.PREFIX + "§rDu bist immer noch ein §6§lKingsmen§r!");
+            player.setPlayerListName("[§6Kingsmen§f] " + player.getName());
+            player.setDisplayName("[§6Kingsmen§f] " + player.getName());
+        } else if (arg.equals("Troll")) {
+            player.sendMessage(Main.PREFIX + "§rDu bist immernoch ein §d§lTroll§r!");
+            player.setPlayerListName("[§dTroll§f] " + player.getName());
+            player.setDisplayName("[§dTroll§f] " + player.getName());
         }
 
         fileconfig config = new fileconfig("config.yml");

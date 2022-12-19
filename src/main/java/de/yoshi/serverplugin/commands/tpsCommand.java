@@ -5,11 +5,14 @@ import de.yoshi.serverplugin.utils.tpsUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
-public class tpsCommand implements CommandExecutor {
+public class tpsCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         double TPS = tpsUtils.getTPS();
@@ -33,5 +36,10 @@ public class tpsCommand implements CommandExecutor {
             player.sendMessage(Main.PREFIX + "§rAktuelle TPS: §c" + tpsFormat.format(TPS));
         }
         return true;
+    }
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        return list;
     }
 }

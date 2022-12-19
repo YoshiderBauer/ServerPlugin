@@ -4,14 +4,17 @@ import de.yoshi.serverplugin.Main;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
-public class timeCommand implements CommandExecutor {
+public class timeCommand implements CommandExecutor, TabCompleter {
     public static String Zeit;
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -27,5 +30,10 @@ public class timeCommand implements CommandExecutor {
         player.sendMessage(Main.PREFIX + "Es ist " + localDateTime.format(dateTimeFormatter) + " Uhr am " + localDateTime.format(dateTimeFormatter1) + "!");
         Zeit = localDateTime.format(dateTimeFormatter) + " Uhr";
         return true;
+    }
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        return list;
     }
 }

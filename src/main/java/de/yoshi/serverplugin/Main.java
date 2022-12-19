@@ -24,8 +24,8 @@ public final class Main extends JavaPlugin {
         INSTANCE = this;
     }
 
-    static fileconfig config = new fileconfig("config.yml");
-    static fileconfig afk = new fileconfig("afk.yml");
+    static fileconfig config;
+    static fileconfig status;
     public long lastStart;
     public static String PREFIX; //default: §7| §f§lSurvival Server §l§7x§a
     public static String NOPERMISSION = "§cDu hast keine Berechtigung diesen Command auszuführen!";
@@ -36,6 +36,12 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        try {
+            config = new fileconfig("config.yml");
+        } catch (Exception e) {}
+        try {
+            status = new fileconfig("status.yml");
+        } catch (Exception e) {}
         this.setFiles();
         this.register();
         this.setCraftingRecipe();
@@ -56,8 +62,8 @@ public final class Main extends JavaPlugin {
         }
 
         for(OfflinePlayer all : Bukkit.getWhitelistedPlayers()){
-            if(!afk.contains(all.getName())) afk.set(all.getName(), false);
-            afk.saveConfig();
+            if(!status.contains(all.getName())) status.set(all.getName(), "reset");
+            status.saveConfig();
         }
         lastStart = System.currentTimeMillis();
 
@@ -117,8 +123,8 @@ public final class Main extends JavaPlugin {
         if(!config.contains("CustomChat"))config.set("CustomChat", true);
         if(!config.contains("Auto-Restart delay"))config.set("Auto-Restart delay", 120);
         config.saveConfig();
-        if(!afk.contains("Description"))afk.set("Description", "Hier werden die AFK Spieler gespeichert.");
-        afk.saveConfig();
+        if(!status.contains("Description")) status.set("Description", "Hier werden die AFK Spieler gespeichert.");
+        status.saveConfig();
     }
 
     private void register() {
@@ -128,14 +134,14 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new serverPing(), this);
         pluginManager.registerEvents(new gameModeListener(this), this);
         if(configUtils.getBoolean(config,"InvisItemFrame", true)) pluginManager.registerEvents(new rightClickListener(), this);
-        if(configUtils.getBoolean(config,"CustomChat", true)) pluginManager.registerEvents(new chatListener(), this);
+        if(configUtils.getBoolean(config,"CustomChat", false)) pluginManager.registerEvents(new chatListener(), this);
         if(configUtils.getBoolean(config,"SpawnElytra", true)) pluginManager.registerEvents(new SpawnElytra(this), this);
         //Commands:
-        Bukkit.getPluginCommand("afk").setExecutor(new afkCommand());
         Bukkit.getPluginCommand("ping").setExecutor(new pingCommand());
         Bukkit.getPluginCommand("start").setExecutor(new startCommand());
         Bukkit.getPluginCommand("zeit").setExecutor(new timeCommand());
         Bukkit.getPluginCommand("ticks").setExecutor(new tpsCommand());
+        Bukkit.getPluginCommand("status").setExecutor(new statusCommand());
         if (configUtils.getBoolean(config, "lobbyCommand", false)) Bukkit.getPluginCommand("lobby").setExecutor(new lobbyCommand());
         //Scheduler:
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new tpsUtils(), 100L, 1L);
