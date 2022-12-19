@@ -123,7 +123,7 @@ public final class Main extends JavaPlugin {
         if(!config.contains("CustomChat"))config.set("CustomChat", true);
         if(!config.contains("Auto-Restart delay"))config.set("Auto-Restart delay", 120);
         config.saveConfig();
-        if(!status.contains("Description")) status.set("Description", "Hier werden die AFK Spieler gespeichert.");
+        if(!status.contains("Description")) status.set("Description", "Hier werden die Statusse der Spieler gespeichert.");
         status.saveConfig();
     }
 
