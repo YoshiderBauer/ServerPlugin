@@ -88,6 +88,6 @@ public class joinQuitListener implements Listener {
     private void playerQuit(PlayerQuitEvent event){
         Player player = event.getPlayer();
 
-        event.setQuitMessage(Main.PREFIX + "§c" + player.getDisplayName() + " §7hat den Server verlassen.");
+        event.setQuitMessage(Main.PREFIX + "§c" + player.getName() + " §7hat den Server verlassen.");
     }
 }
