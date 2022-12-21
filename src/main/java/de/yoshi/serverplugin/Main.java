@@ -142,7 +142,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginCommand("zeit").setExecutor(new timeCommand());
         Bukkit.getPluginCommand("ticks").setExecutor(new tpsCommand());
         Bukkit.getPluginCommand("status").setExecutor(new statusCommand());
-        if (configUtils.getBoolean(config, "lobbyCommand", false)) Bukkit.getPluginCommand("lobby").setExecutor(new lobbyCommand());
+        Bukkit.getPluginCommand("lobby").setExecutor(new lobbyCommand());
         //Scheduler:
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new tpsUtils(), 100L, 1L);
         if(configUtils.getInt(config,"Auto-Restart delay", 120) != 0) Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new restart(this), 0, 1200);
