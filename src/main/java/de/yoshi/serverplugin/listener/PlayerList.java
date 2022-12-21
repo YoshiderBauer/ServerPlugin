@@ -71,6 +71,8 @@ public class PlayerList implements Runnable{
                 player.setPlayerListName("[§6Kingsmen§f] " + player.getName());
             } else if (Objects.equals(arg, "Troll")) {
                 player.setPlayerListName("[§dTroll§f] " + player.getName());
+            } else if (Objects.equals(arg, "cam")) {
+                player.setPlayerListName("§r[§7CAM§r] " + player.getName());
             }
         }
     }

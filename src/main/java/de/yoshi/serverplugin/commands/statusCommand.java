@@ -1,6 +1,7 @@
 package de.yoshi.serverplugin.commands;
 
 import de.yoshi.serverplugin.Main;
+import de.yoshi.serverplugin.utils.configUtils;
 import de.yoshi.serverplugin.utils.fileconfig;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -18,10 +19,18 @@ public class statusCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(!(sender instanceof Player)){
             Main.log(Main.NOPERMISSION);
-            return  false;
+            return  true;
         }
         fileconfig status = new fileconfig("status.yml");
         Player player = (Player) sender;
+        if(configUtils.getString(status, player.getName(), "reset").equals("cam")){
+            player.sendMessage(Main.PREFIX + "§cDieser Command kann nur von Spielern ausgeführt werden!");
+            return true;
+        }
+        if(args.length == 0){
+            player.sendMessage(Main.PREFIX + "§cDu musst noch einen Status auswählen!");
+            return true;
+        }
 
         String arg = args[0];
         if(Objects.equals(arg, "afk")){

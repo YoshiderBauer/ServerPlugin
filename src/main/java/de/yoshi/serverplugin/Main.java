@@ -12,10 +12,15 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 public final class Main extends JavaPlugin {
     public static Main INSTANCE;
@@ -45,6 +50,7 @@ public final class Main extends JavaPlugin {
         this.setFiles();
         this.register();
         this.setCraftingRecipe();
+
         PREFIX = configUtils.getString(config, "PREFIX", "§7| §f§lSurvival Server §l§7x§a "); //default: §7| §f§lSurvival Server §l§7x§a
 
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
@@ -122,6 +128,7 @@ public final class Main extends JavaPlugin {
         if(!config.contains("Start"))config.set("Start", false);
         if(!config.contains("CustomChat"))config.set("CustomChat", true);
         if(!config.contains("Auto-Restart delay"))config.set("Auto-Restart delay", 120);
+        if(!config.contains("DeathCounter"))config.set("DeathCounter", true);
         config.saveConfig();
         if(!status.contains("Description")) status.set("Description", "Hier werden die Statusse der Spieler gespeichert.");
         status.saveConfig();
@@ -143,6 +150,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginCommand("ticks").setExecutor(new tpsCommand());
         Bukkit.getPluginCommand("status").setExecutor(new statusCommand());
         Bukkit.getPluginCommand("lobby").setExecutor(new lobbyCommand());
+        Bukkit.getPluginCommand("cam").setExecutor(new camCommand());
         //Scheduler:
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new tpsUtils(), 100L, 1L);
         if(configUtils.getInt(config,"Auto-Restart delay", 120) != 0) Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new restart(this), 0, 1200);

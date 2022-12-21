@@ -23,3 +23,6 @@ commands:
   status:
     description: Damit kannst du deinen Status festlegen.
     usage: <Status>
+  cam:
+    description: Mit diesem Command können Cam Accounts festgelegt werden.
+    permission: op

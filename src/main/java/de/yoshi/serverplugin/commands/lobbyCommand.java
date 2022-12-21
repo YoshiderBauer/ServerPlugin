@@ -22,7 +22,7 @@ public class lobbyCommand implements CommandExecutor, TabCompleter {
         }
         fileconfig config = new fileconfig("config.yml");
         Player player = (Player) sender;
-        if(configUtils.getBoolean(config, "lobbyCommand", false)){
+        if(!configUtils.getBoolean(config, "lobbyCommand", false)){
             player.sendMessage(Main.PREFIX + "§cDer Server befindet sich in keinem Servernetzwerk!");
         } else {
             player.sendMessage(Main.PREFIX + "Du wirst nun weitergeleitet. ");

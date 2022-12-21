@@ -5,6 +5,7 @@ import de.yoshi.serverplugin.utils.configUtils;
 import de.yoshi.serverplugin.utils.fileconfig;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,6 +13,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scoreboard.*;
 
 public class joinQuitListener implements Listener {
     @EventHandler
@@ -19,14 +21,18 @@ public class joinQuitListener implements Listener {
         Player player = event.getPlayer();
         player.setPlayerListHeader("\n            " + Main.PREFIX + "         \n");
         player.setPlayerListFooter(" ");
-
-        event.setJoinMessage(Main.PREFIX + "§a" + player.getDisplayName() + " §7hat den Server betreten.");
-
         fileconfig status = new fileconfig("status.yml");
 
         if(!status.contains(player.getName())) {
             status.set(player.getName(), "reset");
             status.saveConfig();
+        }
+
+        if(!configUtils.getString(status, player.getName(), "reset").equals("cam")){
+            event.setJoinMessage(Main.PREFIX + "§a" + player.getName() + " §7hat den Server betreten.");
+        } else {
+            event.setJoinMessage("");
+            Main.log("§a" + player.getName() + " §7hat den Server betreten.");
         }
 
         String arg = configUtils.getString(status, player.getName(), "reset");
@@ -71,9 +77,31 @@ public class joinQuitListener implements Listener {
             player.sendMessage(Main.PREFIX + "§rDu bist immernoch ein §d§lTroll§r!");
             player.setPlayerListName("[§dTroll§f] " + player.getName());
             player.setDisplayName("[§dTroll§f] " + player.getName());
+        } else if (arg.equals("cam")) {
+            player.setDisplayName("§r[§7CAM§r] " + player.getName());
+            player.setPlayerListName("§r[§7CAM§r] " + player.getName());
+        } else if (arg.equals("cam") && (!player.getGameMode().equals(GameMode.SPECTATOR))) {
+            player.setGameMode(GameMode.SPECTATOR);
+            player.setDisplayName("§r[§7CAM§r] " + player.getName());
+            player.setPlayerListName("§r[§7CAM§r] " + player.getName());
         }
 
         fileconfig config = new fileconfig("config.yml");
+
+        if(configUtils.getBoolean(config, "DeathCounter", true)){
+            ScoreboardManager manager = Bukkit.getScoreboardManager();
+            Scoreboard scoreboard;
+            Objective objective;
+
+            scoreboard = manager.getNewScoreboard();
+            objective = scoreboard.registerNewObjective("Deaths", "deathCount");
+            objective.setDisplayName("Deaths");
+            objective.setDisplaySlot(DisplaySlot.PLAYER_LIST);
+            Score score = objective.getScore(player);
+            score.setScore(player.getStatistic(Statistic.DEATHS));
+            player.setScoreboard(scoreboard);
+        }
+
         if(!config.getBoolean("Start")){
             player.teleport(Bukkit.getWorlds().get(0).getSpawnLocation());
             player.setGameMode(GameMode.ADVENTURE);
@@ -87,7 +115,12 @@ public class joinQuitListener implements Listener {
     @EventHandler
     private void playerQuit(PlayerQuitEvent event){
         Player player = event.getPlayer();
-
-        event.setQuitMessage(Main.PREFIX + "§c" + player.getName() + " §7hat den Server verlassen.");
+        fileconfig status = new fileconfig("status.yml");
+        if(!configUtils.getString(status, player.getName(), "reset").equals("cam")){
+            event.setQuitMessage(Main.PREFIX + "§c" + player.getName() + " §7hat den Server verlassen.");
+        } else {
+            event.setQuitMessage("");
+            Main.log("§c" + player.getName() + " §7hat den Server verlassen.");
+        }
     }
 }
