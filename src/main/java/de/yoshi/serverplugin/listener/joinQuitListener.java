@@ -80,6 +80,10 @@ public class joinQuitListener implements Listener {
         } else if (arg.equals("cam")) {
             player.setDisplayName("§r[§7CAM§r] " + player.getName());
             player.setPlayerListName("§r[§7CAM§r] " + player.getName());
+        } else if (arg.equals("ghg")){
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §1§lGHG§r!");
+            player.setPlayerListName("[§1GHG§f] " + player.getName());
+            player.setDisplayName("[§1GHG§f] " + player.getName());
         } else if (arg.equals("cam") && (!player.getGameMode().equals(GameMode.SPECTATOR))) {
             player.setGameMode(GameMode.SPECTATOR);
             player.setDisplayName("§r[§7CAM§r] " + player.getName());

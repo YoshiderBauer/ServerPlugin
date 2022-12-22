@@ -28,7 +28,15 @@ public class statusCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         if(args.length == 0){
-            player.sendMessage(Main.PREFIX + "§cDu musst noch einen Status auswählen!");
+            status.set(player.getName(), "reset");
+            player.sendMessage(Main.PREFIX + "Dein Status wurde nun zurück gesetzt!");
+            if(player.hasPermission("op")){
+                player.setPlayerListName("[§cADMIN§f] " + player.getName());
+                player.setDisplayName("[§cADMIN§f] " + player.getName());
+            } else {
+                player.setPlayerListName("[§aPlayer§f] " + player.getName());
+                player.setDisplayName("[§aPlayer§f] " + player.getName());
+            }
             return true;
         }
 
@@ -83,6 +91,11 @@ public class statusCommand implements CommandExecutor, TabCompleter {
             player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §d§lTroll§r gesetzt!");
             player.setPlayerListName("[§dTroll§f] " + player.getName());
             player.setDisplayName("[§dTroll§f] " + player.getName());
+        } else if (Objects.equals(arg, "ghg") || Objects.equals(arg, "GHG")) {
+            status.set(player.getName(), "ghg");
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §1§lGHG§r gesetzt!");
+            player.setPlayerListName("[§1GHG§f] " + player.getName());
+            player.setDisplayName("[§1GHG§f] " + player.getName());
         } else {
             status.set(player.getName(), "reset");
             player.sendMessage(Main.PREFIX + "Dein Status wurde nun zurück gesetzt!");
@@ -106,6 +119,8 @@ public class statusCommand implements CommandExecutor, TabCompleter {
             if(a.startsWith("a") || a.startsWith("A")) {
                 statuse.add("afk");
                 statuse.add("Aufnahme");
+            } else if (a.startsWith("g") || a.startsWith("G")) {
+                statuse.add("GHG");
             } else if (a.startsWith("k") || a.startsWith("K")) {
                 statuse.add("Kingsmen");
             } else if (a.startsWith("p")  || a.startsWith("P")) {
@@ -128,6 +143,7 @@ public class statusCommand implements CommandExecutor, TabCompleter {
                 statuse.add("pog");
                 statuse.add("Kingsmen");
                 statuse.add("Troll");
+                statuse.add("GHG");
             } else {
                 statuse.clear();
             }
