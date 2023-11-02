@@ -96,6 +96,11 @@ public class statusCommand implements CommandExecutor, TabCompleter {
             player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §1§lGHG§r gesetzt!");
             player.setPlayerListName("[§1GHG§f] " + player.getName());
             player.setDisplayName("[§1GHG§f] " + player.getName());
+        } else if (Objects.equals(arg, "Itz") || Objects.equals(arg, "itz")) {
+            status.set(player.getName(), "itz");
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §1§6Itz§r gesetzt!");
+            player.setPlayerListName("[§6Itz§f] " + player.getName());
+            player.setDisplayName("[§6Itz§f] " + player.getName());
         } else {
             status.set(player.getName(), "reset");
             player.sendMessage(Main.PREFIX + "Dein Status wurde nun zurück gesetzt!");
@@ -121,6 +126,8 @@ public class statusCommand implements CommandExecutor, TabCompleter {
                 statuse.add("Aufnahme");
             } else if (a.startsWith("g") || a.startsWith("G")) {
                 statuse.add("GHG");
+            } else if (a.startsWith("i") || a.startsWith("I")) {
+                statuse.add("Itz");
             } else if (a.startsWith("k") || a.startsWith("K")) {
                 statuse.add("Kingsmen");
             } else if (a.startsWith("p")  || a.startsWith("P")) {
@@ -144,6 +151,7 @@ public class statusCommand implements CommandExecutor, TabCompleter {
                 statuse.add("Kingsmen");
                 statuse.add("Troll");
                 statuse.add("GHG");
+                statuse.add("Itz");
             } else {
                 statuse.clear();
             }

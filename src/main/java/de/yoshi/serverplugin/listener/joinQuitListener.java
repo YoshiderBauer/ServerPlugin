@@ -84,6 +84,10 @@ public class joinQuitListener implements Listener {
             player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §1§lGHG§r!");
             player.setPlayerListName("[§1GHG§f] " + player.getName());
             player.setDisplayName("[§1GHG§f] " + player.getName());
+        } else if (arg.equals("itz")){
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §1§6Itz§r!");
+            player.setPlayerListName("[§6Itz§f] " + player.getName());
+            player.setDisplayName("[§6Itz§f] " + player.getName());
         } else if (arg.equals("cam") && (!player.getGameMode().equals(GameMode.SPECTATOR))) {
             player.setGameMode(GameMode.SPECTATOR);
             player.setDisplayName("§r[§7CAM§r] " + player.getName());
