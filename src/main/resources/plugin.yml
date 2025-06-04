@@ -1,7 +1,7 @@
 name: ServerPlugin
 version: '${project.version}'
 main: de.yoshi.serverplugin.Main
-api-version: 1.19
+api-version: 1.20.2
 authors: [ Yoshi_der_Bauer ]
 description: Ein Server Plugin für Survival Server!
 

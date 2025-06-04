@@ -49,46 +49,42 @@ public class joinQuitListener implements Listener {
                 player.setPlayerListName("[§aPlayer§f] " + player.getName());
                 player.setDisplayName("[§aPlayer§f] " + player.getName());
             }
-        } else if (arg.equals("Roleplay")){
-            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §5§lRoleplay§r!");
-            player.setPlayerListName("[§5RP§f] " + player.getName());
-            player.setDisplayName("[§5RP§f] " + player.getName());
-        } else if (arg.equals("Redstone")){
-            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §c§lRedstone§r!");
-            player.setPlayerListName("[§cREDSTONE§f] " + player.getName());
-            player.setDisplayName("[§cREDSTONE§f] " + player.getName());
+        } else if (arg.equals("Rockstars")){
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §6§lRockstars§r!");
+            player.setPlayerListName("[§6Rockstars§f] " + player.getName());
+            player.setDisplayName("[§6Rockstars§f] " + player.getName());
+        } else if (arg.equals("Regio")){
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §c§lRegio§r!");
+            player.setPlayerListName("[§cRegio§f] " + player.getName());
+            player.setDisplayName("[§cRegio§f] " + player.getName());
         } else if (arg.equals("pog")){
-            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §2§lPog§r!");
-            player.setPlayerListName("[§2POG§f] " + player.getName());
-            player.setDisplayName("[§2POG§f] " + player.getName());
-        } else if (arg.equals("Livestream")) {
-            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §9§lLivestream§r!");
-            player.setPlayerListName("[§9LIVE§f] " + player.getName());
-            player.setDisplayName("[§9LIVE§f] " + player.getName());
-        } else if (arg.equals("Aufnahme")) {
-            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §c§lAufnahme§r!");
-            player.setPlayerListName("[§cREC§f] " + player.getName());
-            player.setDisplayName("[§cREC§f] " + player.getName());
-        } else if (arg.equals("Kingsmen")) {
-            player.sendMessage(Main.PREFIX + "§rDu bist immer noch ein §6§lKingsmen§r!");
-            player.setPlayerListName("[§6Kingsmen§f] " + player.getName());
-            player.setDisplayName("[§6Kingsmen§f] " + player.getName());
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §7§lFernverkehr§r!");
+            player.setPlayerListName("[§7Fernverkehr§f] " + player.getName());
+            player.setDisplayName("[§7Fernverkehr§f] " + player.getName());
+        } else if (arg.equals("Cargo")) {
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §4§lCargo§r!");
+            player.setPlayerListName("[§4Cargo§f] " + player.getName());
+            player.setDisplayName("[§4Cargo§f] " + player.getName());
+        } else if (arg.equals("SBB")) {
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §8§lSBB§r!");
+            player.setPlayerListName("[§8SBB§f] " + player.getName());
+            player.setDisplayName("[§8SBB§f] " + player.getName());
+        } else if (arg.equals("AVG")) {
+            player.sendMessage(Main.PREFIX + "§rDu bist immer noch ein §2§lAVG§r!");
+            player.setPlayerListName("[§2AVG§f] " + player.getName());
+            player.setDisplayName("[§2AVG§f] " + player.getName());
         } else if (arg.equals("Troll")) {
-            player.sendMessage(Main.PREFIX + "§rDu bist immernoch ein §d§lTroll§r!");
-            player.setPlayerListName("[§dTroll§f] " + player.getName());
-            player.setDisplayName("[§dTroll§f] " + player.getName());
+            player.sendMessage(Main.PREFIX + "§rDu bist immernoch ein §f§lBundesbahn§r!");
+            player.setPlayerListName("[§fBundesbahn§f] " + player.getName());
+            player.setDisplayName("[§fBundesbahn§f] " + player.getName());
         } else if (arg.equals("cam")) {
             player.setDisplayName("§r[§7CAM§r] " + player.getName());
             player.setPlayerListName("§r[§7CAM§r] " + player.getName());
         } else if (arg.equals("ghg")){
-            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §1§lGHG§r!");
-            player.setPlayerListName("[§1GHG§f] " + player.getName());
-            player.setDisplayName("[§1GHG§f] " + player.getName());
-        } else if (arg.equals("itz")){
-            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §1§6Itz§r!");
-            player.setPlayerListName("[§6Itz§f] " + player.getName());
-            player.setDisplayName("[§6Itz§f] " + player.getName());
-        } else if (arg.equals("cam") && (!player.getGameMode().equals(GameMode.SPECTATOR))) {
+            player.sendMessage(Main.PREFIX + "§rDein Status steht immernoch auf §a§lReichsbahn§r!");
+            player.setPlayerListName("[§aReichsbahn§f] " + player.getName());
+            player.setDisplayName("[§aReichsbahn§f] " + player.getName());
+        }  else if (arg.equals("cam") && (!player.getGameMode().equals(GameMode.SPECTATOR))) {
             player.setGameMode(GameMode.SPECTATOR);
             player.setDisplayName("§r[§7CAM§r] " + player.getName());
             player.setPlayerListName("§r[§7CAM§r] " + player.getName());

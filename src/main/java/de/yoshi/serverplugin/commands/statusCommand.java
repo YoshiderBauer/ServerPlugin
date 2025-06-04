@@ -56,52 +56,47 @@ public class statusCommand implements CommandExecutor, TabCompleter {
                 player.setPlayerListName("[§aPlayer§f] " + player.getName());
                 player.setDisplayName("[§aPlayer§f] " + player.getName());
             }
-        } else if (Objects.equals(arg, "Roleplay")){
-            status.set(player.getName(), "Roleplay");
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §5§lRoleplay§r gesetzt!");
-            player.setPlayerListName("[§5RP§f] " + player.getName());
-            player.setDisplayName("[§5RP§f] " + player.getName());
-        } else if (Objects.equals(arg, "Redstone")){
-            status.set(player.getName(), "Redstone");
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §c§lRedstone§r gesetzt!");
-            player.setDisplayName("[§cREDSTONE§f] " + player.getName());
-            player.setPlayerListName("[§cREDSTONE§f] " + player.getName());
-        } else if (Objects.equals(arg, "pog")){
-            status.set(player.getName(), "pog");
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §2§lPog§r gesetzt!");
-            player.setPlayerListName("[§2POG§f] " + player.getName());
-            player.setDisplayName("[§2POG§f] " + player.getName());
-        } else if (Objects.equals(arg, "Livestream")) {
-            status.set(player.getName(), "Livestream");
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §9§lLivestream§r gesetzt!");
-            player.setPlayerListName("[§9LIVE§f] " + player.getName());
-            player.setDisplayName("[§9LIVE§f] " + player.getName());
-        } else if (Objects.equals(arg, "Aufnahme")) {
-            status.set(player.getName(), "Aufnahme");
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §c§lAufnahme§r gesetzt!");
-            player.setPlayerListName("[§cREC§f] " + player.getName());
-            player.setDisplayName("[§cREC§f] " + player.getName());
-        } else if (Objects.equals(arg, "Kingsmen")) {
-            status.set(player.getName(), "Kingsmen");
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §6§lKingsmen§r gesetzt!");
-            player.setPlayerListName("[§6Kingsmen§f] " + player.getName());
-            player.setDisplayName("[§6Kingsmen§f] " + player.getName());
-        } else if (Objects.equals(arg, "Troll")) {
-            status.set(player.getName(), "Troll");
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §d§lTroll§r gesetzt!");
-            player.setPlayerListName("[§dTroll§f] " + player.getName());
-            player.setDisplayName("[§dTroll§f] " + player.getName());
-        } else if (Objects.equals(arg, "ghg") || Objects.equals(arg, "GHG")) {
-            status.set(player.getName(), "ghg");
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §1§lGHG§r gesetzt!");
-            player.setPlayerListName("[§1GHG§f] " + player.getName());
-            player.setDisplayName("[§1GHG§f] " + player.getName());
-        } else if (Objects.equals(arg, "Itz") || Objects.equals(arg, "itz")) {
-            status.set(player.getName(), "itz");
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §1§6Itz§r gesetzt!");
-            player.setPlayerListName("[§6Itz§f] " + player.getName());
-            player.setDisplayName("[§6Itz§f] " + player.getName());
-        } else {
+        } else if (Objects.equals(arg, "Rockstars")){
+            status.set(player.getName(), "Rockstars");
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §6§lRockstars§r gesetzt!");
+            player.setPlayerListName("[§6Rockstars§f] " + player.getName());
+            player.setDisplayName("[§6Rockstars§f] " + player.getName());
+        } else if (Objects.equals(arg, "Regio")){
+            status.set(player.getName(), "Regio");
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §c§lRegio§r gesetzt!");
+            player.setDisplayName("[§cRegio§f] " + player.getName());
+            player.setPlayerListName("[§cRegio§f] " + player.getName());
+        } else if (Objects.equals(arg, "fv")){
+            status.set(player.getName(), "fv");
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §7§lFernverkehr§r gesetzt!");
+            player.setPlayerListName("[§7Fernverkehr§f] " + player.getName());
+            player.setDisplayName("[§7Fernverkehr§f] " + player.getName());
+        } else if (Objects.equals(arg, "Cargo")) {
+            status.set(player.getName(), "Cargo");
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §4§lCargo§r gesetzt!");
+            player.setPlayerListName("[§4Cargo§f] " + player.getName());
+            player.setDisplayName("[§4Cargo§f] " + player.getName());
+        } else if (Objects.equals(arg, "SBB")) {
+            status.set(player.getName(), "SBB");
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §8§lSBB§r gesetzt!");
+            player.setPlayerListName("[§8SBB§f] " + player.getName());
+            player.setDisplayName("[§8SBB§f] " + player.getName());
+        } else if (Objects.equals(arg, "AVG")) {
+            status.set(player.getName(), "AVG");
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §2§lAVG§r gesetzt!");
+            player.setPlayerListName("[§2AVG§f] " + player.getName());
+            player.setDisplayName("[§2AVG§f] " + player.getName());
+        } else if (Objects.equals(arg, "Bundesbahn")) {
+            status.set(player.getName(), "Bundesbahn");
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §f§lBundesbahn§r gesetzt!");
+            player.setPlayerListName("[§fBundesbahn§f] " + player.getName());
+            player.setDisplayName("[§fBundesbahn§f] " + player.getName());
+        } else if (Objects.equals(arg, "Reichsbahn")) {
+            status.set(player.getName(), "Reichsbahn");
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf §a§lReichsbahn§r gesetzt!");
+            player.setPlayerListName("[§aReichsbahn§f] " + player.getName());
+            player.setDisplayName("[§aReichsbahn§f] " + player.getName());
+        }  else {
             status.set(player.getName(), "reset");
             player.sendMessage(Main.PREFIX + "Dein Status wurde nun zurück gesetzt!");
             if(player.hasPermission("op")){
@@ -123,35 +118,31 @@ public class statusCommand implements CommandExecutor, TabCompleter {
             String a = args[0];
             if(a.startsWith("a") || a.startsWith("A")) {
                 statuse.add("afk");
-                statuse.add("Aufnahme");
-            } else if (a.startsWith("g") || a.startsWith("G")) {
-                statuse.add("GHG");
-            } else if (a.startsWith("i") || a.startsWith("I")) {
-                statuse.add("Itz");
-            } else if (a.startsWith("k") || a.startsWith("K")) {
-                statuse.add("Kingsmen");
-            } else if (a.startsWith("p")  || a.startsWith("P")) {
-                statuse.add("pog");
+                statuse.add("AVG");
+            } else if (a.startsWith("f")  || a.startsWith("F")) {
+                statuse.add("fv");
             } else if (a.startsWith("r") || a.startsWith("R")) {
-                statuse.add("Redstone");
+                statuse.add("Regio");
                 statuse.add("reset");
-                statuse.add("Roleplay");
-            } else if (a.startsWith("t") || a.startsWith("T")){
-                statuse.add("Troll");
-            } else if (a.startsWith("l") || a.startsWith("L")) {
-                statuse.add("Livestream");
+                statuse.add("Rockstars");
+                statuse.add("Reichsbahn");
+            } else if (a.startsWith("b") || a.startsWith("B")){
+                statuse.add("Bundesbahn");
+            } else if (a.startsWith("c") || a.startsWith("C")) {
+                statuse.add("Cargo");
+            } else if (a.startsWith("s") || a.startsWith("S")) {
+            statuse.add("SBB");
             } else if (a.isEmpty()){
                 statuse.add("afk");
+                statuse.add("AVG");
+                statuse.add("Bundesbahn");
+                statuse.add("Cargo");
+                statuse.add("fv");
+                statuse.add("Regio");
+                statuse.add("Reichsbahn");
                 statuse.add("reset");
-                statuse.add("Livestream");
-                statuse.add("Aufnahme");
-                statuse.add("Roleplay");
-                statuse.add("Redstone");
-                statuse.add("pog");
-                statuse.add("Kingsmen");
-                statuse.add("Troll");
-                statuse.add("GHG");
-                statuse.add("Itz");
+                statuse.add("Rockstars");
+                statuse.add("SBB");
             } else {
                 statuse.clear();
             }

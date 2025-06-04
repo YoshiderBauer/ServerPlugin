@@ -57,26 +57,24 @@ public class PlayerList implements Runnable{
                 } else {
                     player.setPlayerListName("[§aPlayer§f] " + player.getName());
                 }
-            } else if (Objects.equals(arg, "Roleplay")){
-                player.setPlayerListName("[§5RP§f] " + player.getName());
-            } else if (Objects.equals(arg, "Redstone")){
-                player.setPlayerListName("[§cREDSTONE§f] " + player.getName());
-            } else if (Objects.equals(arg, "pog")){
-                player.setPlayerListName("[§2POG§f] " + player.getName());
-            } else if (Objects.equals(arg, "Livestream")) {
-                player.setPlayerListName("[§9LIVE§f] " + player.getName());
-            } else if (Objects.equals(arg, "Aufnahme")) {
-                player.setPlayerListName("[§cREC§f] " + player.getName());
-            } else if (Objects.equals(arg, "Kingsmen")) {
-                player.setPlayerListName("[§6Kingsmen§f] " + player.getName());
-            } else if (Objects.equals(arg, "Troll")) {
-                player.setPlayerListName("[§dTroll§f] " + player.getName());
+            } else if (Objects.equals(arg, "Rockstars")){
+                player.setPlayerListName("[§6Rockstars§f] " + player.getName());
+            } else if (Objects.equals(arg, "Regio")){
+                player.setPlayerListName("[§cRegio§f] " + player.getName());
+            } else if (Objects.equals(arg, "fv")){
+                player.setPlayerListName("[§7Fernverkehr§f] " + player.getName());
+            } else if (Objects.equals(arg, "Cargo")) {
+                player.setPlayerListName("[§4Cargo§f] " + player.getName());
+            } else if (Objects.equals(arg, "SBB")) {
+                player.setPlayerListName("[§8SBB§f] " + player.getName());
+            } else if (Objects.equals(arg, "AVG")) {
+                player.setPlayerListName("[§2AVG§f] " + player.getName());
+            } else if (Objects.equals(arg, "Bundesbahn")) {
+                player.setPlayerListName("[§fBundesbahn§f] " + player.getName());
             } else if (Objects.equals(arg, "cam")) {
                 player.setPlayerListName("§r[§7CAM§r] " + player.getName());
-            } else if (Objects.equals(arg, "ghg")){
-                player.setPlayerListName("[§1GHG§r] " + player.getName());
-            } else if (Objects.equals(arg, "itz")){
-                player.setPlayerListName("[§6Itz§r] " + player.getName());
+            } else if (Objects.equals(arg, "Reichsbahn")){
+                player.setPlayerListName("[§aReichsbahn§r] " + player.getName());
             }
         }
     }
