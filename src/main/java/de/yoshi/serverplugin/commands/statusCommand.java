@@ -30,6 +30,7 @@ public class statusCommand implements CommandExecutor, TabCompleter {
         }
         if (args.length == 0) {
             status.set(player.getName(), "reset");
+            status.saveConfig();
             player.sendMessage(Main.PREFIX + "Dein Status wurde nun zurück gesetzt!");
             if (player.hasPermission("op")) {
                 player.setPlayerListName("[§cADMIN§f] " + player.getName());
