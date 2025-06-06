@@ -31,6 +31,7 @@ public final class Main extends JavaPlugin {
 
     static fileconfig config;
     static fileconfig status;
+    static fileconfig statusConfig;
     public long lastStart;
     public static String PREFIX; //default: §7| §f§lSurvival Server §l§7x§a
     public static String NOPERMISSION = "§cDu hast keine Berechtigung diesen Command auszuführen!";
@@ -46,6 +47,9 @@ public final class Main extends JavaPlugin {
         } catch (Exception e) {}
         try {
             status = new fileconfig("status.yml");
+        } catch (Exception e) {}
+        try {
+            statusConfig = new fileconfig("statusConfig.yml");
         } catch (Exception e) {}
         this.setFiles();
         this.register();
@@ -132,6 +136,28 @@ public final class Main extends JavaPlugin {
         config.saveConfig();
         if(!status.contains("Description")) status.set("Description", "Hier werden die Statusse der Spieler gespeichert.");
         status.saveConfig();
+        if(!statusConfig.contains("Description")) statusConfig.set("Description", "Hier können bis zu 10 Statusse für Spieler hinzugefügt werden.");
+        if(!statusConfig.contains("Status1")) statusConfig.set("Status1", "Status1");
+        if(!statusConfig.contains("Status2")) statusConfig.set("Status2", "Status2");
+        if(!statusConfig.contains("Status3")) statusConfig.set("Status3", "Status3");
+        if(!statusConfig.contains("Status4")) statusConfig.set("Status4", "Status4");
+        if(!statusConfig.contains("Status5")) statusConfig.set("Status5", "Status5");
+        if(!statusConfig.contains("Status6")) statusConfig.set("Status6", "Status6");
+        if(!statusConfig.contains("Status7")) statusConfig.set("Status7", "Status7");
+        if(!statusConfig.contains("Status8")) statusConfig.set("Status8", "Status8");
+        if(!statusConfig.contains("Status9")) statusConfig.set("Status9", "Status9");
+        if(!statusConfig.contains("Status10")) statusConfig.set("Status10", "Status10");
+        if(!statusConfig.contains("Status1Farbe")) statusConfig.set("Status1Farbe", "§r");
+        if(!statusConfig.contains("Status2Farbe")) statusConfig.set("Status2Farbe", "§r");
+        if(!statusConfig.contains("Status3Farbe")) statusConfig.set("Status3Farbe", "§r");
+        if(!statusConfig.contains("Status4Farbe")) statusConfig.set("Status4Farbe", "§r");
+        if(!statusConfig.contains("Status5Farbe")) statusConfig.set("Status5Farbe", "§r");
+        if(!statusConfig.contains("Status6Farbe")) statusConfig.set("Status6Farbe", "§r");
+        if(!statusConfig.contains("Status7Farbe")) statusConfig.set("Status7Farbe", "§r");
+        if(!statusConfig.contains("Status8Farbe")) statusConfig.set("Status8Farbe", "§r");
+        if(!statusConfig.contains("Status9Farbe")) statusConfig.set("Status9Farbe", "§r");
+        if(!statusConfig.contains("Status10Farbe")) statusConfig.set("Status10Farbe", "§r");
+        statusConfig.saveConfig();
     }
 
     private void register() {
