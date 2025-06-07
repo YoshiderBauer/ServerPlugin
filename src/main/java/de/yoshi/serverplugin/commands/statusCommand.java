@@ -3,6 +3,8 @@ package de.yoshi.serverplugin.commands;
 import de.yoshi.serverplugin.Main;
 import de.yoshi.serverplugin.utils.configUtils;
 import de.yoshi.serverplugin.utils.fileconfig;
+import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -22,7 +24,6 @@ public class statusCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         fileconfig status = new fileconfig("status.yml");
-        fileconfig statusConfig = new fileconfig("statusConfig.yml");
         Player player = (Player) sender;
         if (configUtils.getString(status, player.getName(), "reset").equals("cam")) {
             player.sendMessage(Main.PREFIX + "§cDieser Command kann nur von Spielern ausgeführt werden!");
@@ -58,56 +59,56 @@ public class statusCommand implements CommandExecutor, TabCompleter {
                 player.setPlayerListName("[§aPlayer§f] " + player.getName());
                 player.setDisplayName("[§aPlayer§f] " + player.getName());
             }
-        } else if (Objects.equals(arg, statusConfig.getString("Status1"))) {
-            status.set(player.getName(), statusConfig.getString("Status1"));
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + statusConfig.getString("Status1Farbe") + "§l" +statusConfig.getString("Status1") + "§r gesetzt!");
-            player.setPlayerListName("[" + statusConfig.getString("Status1Farbe") +statusConfig.getString("Status1") + "§r] " + player.getName());
-            player.setDisplayName("[" + statusConfig.getString("Status1Farbe") +statusConfig.getString("Status1") + "§r] " + player.getName());
-        } else if (Objects.equals(arg, statusConfig.getString("Status2"))) {
-            status.set(player.getName(), statusConfig.getString("Status2"));
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + statusConfig.getString("Status2Farbe") + "§l"+statusConfig.getString("Status2") + "§r gesetzt!");
-            player.setPlayerListName("[" + statusConfig.getString("Status2Farbe") +statusConfig.getString("Status2") + "§r] " + player.getName());
-            player.setDisplayName("[" + statusConfig.getString("Status2Farbe") +statusConfig.getString("Status2") + "§r] " + player.getName());
-        } else if (Objects.equals(arg, statusConfig.getString("Status3"))) {
-            status.set(player.getName(), statusConfig.getString("Status3"));
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + statusConfig.getString("Status3Farbe") + "§l"+statusConfig.getString("Status3") + "§r gesetzt!");
-            player.setPlayerListName("[" + statusConfig.getString("Status3Farbe") +statusConfig.getString("Status3") + "§r] " + player.getName());
-            player.setDisplayName("[" + statusConfig.getString("Status3Farbe") +statusConfig.getString("Status3") + "§r] " + player.getName());
-        } else if (Objects.equals(arg, statusConfig.getString("Status4"))) {
-            status.set(player.getName(), statusConfig.getString("Status4"));
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + statusConfig.getString("Status4Farbe") + "§l"+statusConfig.getString("Status4") + "§r gesetzt!");
-            player.setPlayerListName("[" + statusConfig.getString("Status4Farbe") +statusConfig.getString("Status4") + "§r] " + player.getName());
-            player.setDisplayName("[" + statusConfig.getString("Status4Farbe") +statusConfig.getString("Status4") + "§r] " + player.getName());
-        } else if (Objects.equals(arg, statusConfig.getString("Status5"))) {
-            status.set(player.getName(), statusConfig.getString("Status5"));
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + statusConfig.getString("Status5Farbe") + "§l"+statusConfig.getString("Status5") + "§r gesetzt!");
-            player.setPlayerListName("[" + statusConfig.getString("Status5Farbe") +statusConfig.getString("Status5") + "§r] " + player.getName());
-            player.setDisplayName("[" + statusConfig.getString("Status5Farbe") +statusConfig.getString("Status5") + "§r] " + player.getName());
-        } else if (Objects.equals(arg, statusConfig.getString("Status6"))) {
-            status.set(player.getName(), statusConfig.getString("Status6"));
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + statusConfig.getString("Status6Farbe") + "§l"+statusConfig.getString("Status6") + "§r gesetzt!");
-            player.setPlayerListName("[" + statusConfig.getString("Status6Farbe") +statusConfig.getString("Status6") + "§r] " + player.getName());
-            player.setDisplayName("[" + statusConfig.getString("Status6Farbe") +statusConfig.getString("Status6") + "§r] " + player.getName());
-        } else if (Objects.equals(arg, statusConfig.getString("Status7"))) {
-            status.set(player.getName(), statusConfig.getString("Status7"));
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + statusConfig.getString("Status7Farbe") + "§l"+ statusConfig.getString("Status7") + "§r gesetzt!");
-            player.setPlayerListName("[" + statusConfig.getString("Status7Farbe") +statusConfig.getString("Status7") + "§r] " + player.getName());
-            player.setDisplayName("[" + statusConfig.getString("Status7Farbe") +statusConfig.getString("Status7") + "§r] " + player.getName());
-        } else if (Objects.equals(arg, statusConfig.getString("Status8"))) {
-            status.set(player.getName(), statusConfig.getString("Status8"));
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + statusConfig.getString("Status8Farbe") + "§l"+statusConfig.getString("Status8") + "§r gesetzt!");
-            player.setPlayerListName("[" + statusConfig.getString("Status8Farbe") +statusConfig.getString("Status8") + "§r] " + player.getName());
-            player.setDisplayName("[" + statusConfig.getString("Status8Farbe") +statusConfig.getString("Status8") + "§r] " + player.getName());
-        } else if (Objects.equals(arg, statusConfig.getString("Status9"))) {
-            status.set(player.getName(), statusConfig.getString("Status9"));
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + statusConfig.getString("Status9Farbe") + "§l"+statusConfig.getString("Status9") + "§r gesetzt!");
-            player.setPlayerListName("[" + statusConfig.getString("Status9Farbe") +statusConfig.getString("Status9") + "§r] " + player.getName());
-            player.setDisplayName("[" + statusConfig.getString("Status9Farbe") +statusConfig.getString("Status9") + "§r] " + player.getName());
-        } else if (Objects.equals(arg, statusConfig.getString("Status10"))) {
-            status.set(player.getName(), statusConfig.getString("Status10"));
-            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + statusConfig.getString("Status10Farbe") + "§l"+statusConfig.getString("Status10") + "§r gesetzt!");
-            player.setPlayerListName("[" + statusConfig.getString("Status10Farbe") +statusConfig.getString("Status10") + "§r] " + player.getName());
-            player.setDisplayName("[" + statusConfig.getString("Status10Farbe") +statusConfig.getString("Status10") + "§r] " + player.getName());
+        } else if (Objects.equals(arg, Main.Status1)) {
+            status.set(player.getName(), Main.Status1);
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + Main.Status1Farbe + "§r gesetzt!");
+            player.setPlayerListName("[" + Main.Status1Farbe + "] " + player.getName());
+            player.setDisplayName("[" + Main.Status1Farbe + "] " + player.getName());;
+        } else if (Objects.equals(arg, Main.Status2)) {
+            status.set(player.getName(), Main.Status2);
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + Main.Status2Farbe + "§r gesetzt!");
+            player.setPlayerListName("[" + Main.Status2Farbe + "] " + player.getName());
+            player.setDisplayName("[" + Main.Status2Farbe + "] " + player.getName());;
+        } else if (Objects.equals(arg, Main.Status3)) {
+            status.set(player.getName(), Main.Status3);
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + Main.Status3Farbe + "§r gesetzt!");
+            player.setPlayerListName("[" + Main.Status3Farbe + "] " + player.getName());
+            player.setDisplayName("[" + Main.Status3Farbe + "] " + player.getName());;
+        } else if (Objects.equals(arg, Main.Status4)) {
+            status.set(player.getName(), Main.Status4);
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + Main.Status4Farbe + "§r gesetzt!");
+            player.setPlayerListName("[" + Main.Status4Farbe + "] " + player.getName());
+            player.setDisplayName("[" + Main.Status4Farbe + "] " + player.getName());;
+        } else if (Objects.equals(arg, Main.Status5)) {
+            status.set(player.getName(), Main.Status5);
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + Main.Status5Farbe + "§r gesetzt!");
+            player.setPlayerListName("[" + Main.Status5Farbe + "] " + player.getName());
+            player.setDisplayName("[" + Main.Status5Farbe + "] " + player.getName());;
+        } else if (Objects.equals(arg, Main.Status6)) {
+            status.set(player.getName(), Main.Status6);
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + Main.Status6Farbe + "§r gesetzt!");
+            player.setPlayerListName("[" + Main.Status6Farbe + "] " + player.getName());
+            player.setDisplayName("[" + Main.Status6Farbe + "] " + player.getName());;
+        } else if (Objects.equals(arg, Main.Status7)) {
+            status.set(player.getName(), Main.Status7);
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + Main.Status7Farbe + "§r gesetzt!");
+            player.setPlayerListName("[" + Main.Status7Farbe + "] " + player.getName());
+            player.setDisplayName("[" + Main.Status7Farbe + "] " + player.getName());;
+        } else if (Objects.equals(arg, Main.Status8)) {
+            status.set(player.getName(), Main.Status8);
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + Main.Status8Farbe + "§r gesetzt!");
+            player.setPlayerListName("[" + Main.Status8Farbe + "] " + player.getName());
+            player.setDisplayName("[" + Main.Status8Farbe + "] " + player.getName());;
+        } else if (Objects.equals(arg, Main.Status9)) {
+            status.set(player.getName(), Main.Status9);
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + Main.Status9Farbe + "§r gesetzt!");
+            player.setPlayerListName("[" + Main.Status9Farbe + "] " + player.getName());
+            player.setDisplayName("[" + Main.Status9Farbe + "] " + player.getName());;
+        } else if (Objects.equals(arg, Main.Status10)) {
+            status.set(player.getName(), Main.Status10);
+            player.sendMessage(Main.PREFIX + "§rDein Status wurde auf " + Main.Status10Farbe + "§r gesetzt!");
+            player.setPlayerListName("[" + Main.Status10Farbe + "] " + player.getName());
+            player.setDisplayName("[" + Main.Status10Farbe + "] " + player.getName());;
         } else {
             status.set(player.getName(), "reset");
             player.sendMessage(Main.PREFIX + "Dein Status wurde nun zurück gesetzt!");
@@ -126,21 +127,20 @@ public class statusCommand implements CommandExecutor, TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         ArrayList<String> statuse = new ArrayList<>();
-        fileconfig statusConfig = new fileconfig("statusConfig.yml");
         if (args.length == 1) {
             String a = args[0];
-                statuse.add("afk");
-                statuse.add("reset");
-                statuse.add(statusConfig.getString("Status1"));
-                statuse.add(statusConfig.getString("Status2"));
-                statuse.add(statusConfig.getString("Status3"));
-                statuse.add(statusConfig.getString("Status4"));
-                statuse.add(statusConfig.getString("Status5"));
-                statuse.add(statusConfig.getString("Status6"));
-                statuse.add(statusConfig.getString("Status7"));
-                statuse.add(statusConfig.getString("Status8"));
-                statuse.add(statusConfig.getString("Status9"));
-                statuse.add(statusConfig.getString("Status10"));
+            statuse.add("afk");
+            statuse.add("reset");
+            statuse.add(Main.Status1);
+            statuse.add(Main.Status2);
+            statuse.add(Main.Status3);
+            statuse.add(Main.Status4);
+            statuse.add(Main.Status5);
+            statuse.add(Main.Status6);
+            statuse.add(Main.Status7);
+            statuse.add(Main.Status8);
+            statuse.add(Main.Status9);
+            statuse.add(Main.Status10);
         } else {
             statuse.clear();
         } return statuse;

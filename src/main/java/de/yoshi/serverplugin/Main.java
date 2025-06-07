@@ -35,6 +35,26 @@ public final class Main extends JavaPlugin {
     public long lastStart;
     public static String PREFIX; //default: §7| §f§lSurvival Server §l§7x§a
     public static String NOPERMISSION = "§cDu hast keine Berechtigung diesen Command auszuführen!";
+    public static String Status1;
+    public static String Status2;
+    public static String Status3;
+    public static String Status4;
+    public static String Status5;
+    public static String Status6;
+    public static String Status7;
+    public static String Status8;
+    public static String Status9;
+    public static String Status10;
+    public static String Status1Farbe;
+    public static String Status2Farbe;
+    public static String Status3Farbe;
+    public static String Status4Farbe;
+    public static String Status5Farbe;
+    public static String Status6Farbe;
+    public static String Status7Farbe;
+    public static String Status8Farbe;
+    public static String Status9Farbe;
+    public static String Status10Farbe;
 
     public static void log(String text) {
         Bukkit.getConsoleSender().sendMessage(PREFIX + text);
@@ -136,7 +156,7 @@ public final class Main extends JavaPlugin {
         config.saveConfig();
         if(!status.contains("Description")) status.set("Description", "Hier werden die Statusse der Spieler gespeichert.");
         status.saveConfig();
-        if(!statusConfig.contains("Description")) statusConfig.set("Description", "Hier können bis zu 10 Statusse für Spieler hinzugefügt werden.");
+        if(!statusConfig.contains("Description")) statusConfig.set("Description", "Hier können bis zu 10 Statusse für Spieler hinzugefügt werden. Zum Anwenden, Server neustarten!");
         if(!statusConfig.contains("Status1")) statusConfig.set("Status1", "Status1");
         if(!statusConfig.contains("Status2")) statusConfig.set("Status2", "Status2");
         if(!statusConfig.contains("Status3")) statusConfig.set("Status3", "Status3");
@@ -147,6 +167,8 @@ public final class Main extends JavaPlugin {
         if(!statusConfig.contains("Status8")) statusConfig.set("Status8", "Status8");
         if(!statusConfig.contains("Status9")) statusConfig.set("Status9", "Status9");
         if(!statusConfig.contains("Status10")) statusConfig.set("Status10", "Status10");
+        if(!statusConfig.contains("Farbe")) statusConfig.set("Farbe", "Hier können für die oben definierten Statusse noch Farben festgelegt werden.");
+        if(!statusConfig.contains("Link")) statusConfig.set("Link", "Minecraft Farbcodes benutzen: https://minecraft.tools/de/color-code.php");
         if(!statusConfig.contains("Status1Farbe")) statusConfig.set("Status1Farbe", "§r");
         if(!statusConfig.contains("Status2Farbe")) statusConfig.set("Status2Farbe", "§r");
         if(!statusConfig.contains("Status3Farbe")) statusConfig.set("Status3Farbe", "§r");
@@ -158,6 +180,26 @@ public final class Main extends JavaPlugin {
         if(!statusConfig.contains("Status9Farbe")) statusConfig.set("Status9Farbe", "§r");
         if(!statusConfig.contains("Status10Farbe")) statusConfig.set("Status10Farbe", "§r");
         statusConfig.saveConfig();
+        Status1 = statusConfig.getString("Status1");
+        Status2 = statusConfig.getString("Status2");
+        Status3 = statusConfig.getString("Status3");
+        Status4 = statusConfig.getString("Status4");
+        Status5 = statusConfig.getString("Status5");
+        Status6 = statusConfig.getString("Status6");
+        Status7 = statusConfig.getString("Status7");
+        Status8 = statusConfig.getString("Status8");
+        Status9 = statusConfig.getString("Status9");
+        Status10 = statusConfig.getString("Status10");
+        Status1Farbe = statusConfig.getString("Status1Farbe") + statusConfig.getString("Status1") + "§r";
+        Status2Farbe = statusConfig.getString("Status2Farbe") + statusConfig.getString("Status2") + "§r";
+        Status3Farbe = statusConfig.getString("Status3Farbe") + statusConfig.getString("Status3") + "§r";
+        Status4Farbe = statusConfig.getString("Status4Farbe") + statusConfig.getString("Status4") + "§r";
+        Status5Farbe = statusConfig.getString("Status5Farbe") + statusConfig.getString("Status5") + "§r";
+        Status6Farbe = statusConfig.getString("Status6Farbe") + statusConfig.getString("Status6") + "§r";
+        Status7Farbe = statusConfig.getString("Status7Farbe") + statusConfig.getString("Status7") + "§r";
+        Status8Farbe = statusConfig.getString("Status8Farbe") + statusConfig.getString("Status8") + "§r";
+        Status9Farbe = statusConfig.getString("Status9Farbe") + statusConfig.getString("Status9") + "§r";
+        Status10Farbe = statusConfig.getString("Status10Farbe") + statusConfig.getString("Status10") + "§r";
     }
 
     private void register() {

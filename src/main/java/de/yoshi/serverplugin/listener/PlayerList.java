@@ -1,5 +1,6 @@
 package de.yoshi.serverplugin.listener;
 
+import de.yoshi.serverplugin.Main;
 import de.yoshi.serverplugin.utils.fileconfig;
 import de.yoshi.serverplugin.utils.tpsUtils;
 import de.yoshi.serverplugin.utils.configUtils;
@@ -46,7 +47,6 @@ public class PlayerList implements Runnable{
             Uhrzeit = "§a§lUhrzeit: §r" + localDateTime.format(dateTimeFormatter);
             player.setPlayerListFooter("\n     " + Uhrzeit + tpsF + Ping + "     \n");
             fileconfig status = new fileconfig("status.yml");
-            fileconfig statusConfig = new fileconfig("statusConfig.yml");
             String arg = configUtils.getString(status, player.getName(), "reset");
 
             if (Objects.equals(arg, "afk")) {
@@ -57,26 +57,26 @@ public class PlayerList implements Runnable{
                 } else {
                     player.setPlayerListName("[§aPlayer§f] " + player.getName());
                 }
-            } else if (Objects.equals(arg, statusConfig.getString("Status1"))) {
-                player.setPlayerListName("[" + statusConfig.getString("Status1Farbe") + statusConfig.getString("Status1") + "§r] " + player.getName());
-            } else if (Objects.equals(arg, statusConfig.getString("Status2"))) {
-                player.setPlayerListName("[" + statusConfig.getString("Status2Farbe") +statusConfig.getString("Status2") + "§r] " + player.getName());
-            } else if (Objects.equals(arg, statusConfig.getString("Status3"))) {
-                player.setPlayerListName("[" + statusConfig.getString("Status3Farbe") +statusConfig.getString("Status3") + "§r] " + player.getName());
-            } else if (Objects.equals(arg, statusConfig.getString("Status4"))) {
-                player.setPlayerListName("[" + statusConfig.getString("Status4Farbe") +statusConfig.getString("Status4") + "§r] " + player.getName());
-            } else if (Objects.equals(arg, statusConfig.getString("Status5"))) {
-                player.setPlayerListName("[" + statusConfig.getString("Status5Farbe") +statusConfig.getString("Status5") + "§r] " + player.getName());
-            } else if (Objects.equals(arg, statusConfig.getString("Status6"))) {
-                player.setPlayerListName("[" + statusConfig.getString("Status6Farbe") +statusConfig.getString("Status6") + "§r] " + player.getName());
-            } else if (Objects.equals(arg, statusConfig.getString("Status7"))) {
-                player.setPlayerListName("[" + statusConfig.getString("Status7Farbe") +statusConfig.getString("Status7") + "§r] " + player.getName());
-            } else if (Objects.equals(arg, statusConfig.getString("Status8"))) {
-                player.setPlayerListName("[" + statusConfig.getString("Status8Farbe") +statusConfig.getString("Status8") + "§r] " + player.getName());
-            } else if (Objects.equals(arg, statusConfig.getString("Status9"))){
-                player.setPlayerListName("[" + statusConfig.getString("Status9Farbe") +statusConfig.getString("Status9")+ "§r] " + player.getName());
-            } else if (Objects.equals(arg, statusConfig.getString("Status10"))){
-                player.setPlayerListName("[" + statusConfig.getString("Status10Farbe") +statusConfig.getString("Status10")+ "§r] " + player.getName());
+            } else if (Objects.equals(arg, Main.Status1)) {
+                player.setPlayerListName("[" + Main.Status1Farbe + "§r] " + player.getName());
+            } else if (Objects.equals(arg, Main.Status2)) {
+                player.setPlayerListName("[" + Main.Status2Farbe + "§r] " + player.getName());
+            } else if (Objects.equals(arg, Main.Status3)) {
+                player.setPlayerListName("[" + Main.Status3Farbe + "§r] " + player.getName());
+            } else if (Objects.equals(arg, Main.Status4)) {
+                player.setPlayerListName("[" + Main.Status4Farbe + "§r] " + player.getName());
+            } else if (Objects.equals(arg, Main.Status5)) {
+                player.setPlayerListName("[" + Main.Status5Farbe + "§r] " + player.getName());
+            } else if (Objects.equals(arg, Main.Status6)) {
+                player.setPlayerListName("[" + Main.Status6Farbe + "§r] " + player.getName());
+            } else if (Objects.equals(arg, Main.Status7)) {
+                player.setPlayerListName("[" + Main.Status7Farbe + "§r] " + player.getName());
+            } else if (Objects.equals(arg, Main.Status8)) {
+                player.setPlayerListName("[" + Main.Status8Farbe + "§r] " + player.getName());
+            } else if (Objects.equals(arg, Main.Status9)) {
+                player.setPlayerListName("[" + Main.Status9Farbe + "§r] " + player.getName());
+            } else if (Objects.equals(arg, Main.Status10)) {
+                player.setPlayerListName("[" + Main.Status10Farbe + "§r] " + player.getName());
             } else if (Objects.equals(arg, "cam")) {
                 player.setPlayerListName("§r[§7CAM§r] " + player.getName());
             } else {
