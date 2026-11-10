@@ -118,7 +118,7 @@ public class ItemBuilder {
         this(cfg.getItemStack(path));
     }
 
-    /**
+    /*
      * Initalizes the ItemBuilder with an already existing {@link //cc.acquized.itembuilder.api.ItemBuilder}
      * @deprecated Use the already initalized {@code ItemBuilder} Instance to improve performance
      */
@@ -318,7 +318,7 @@ public class ItemBuilder {
 
     /** Makes the ItemStack Glow like it had a Enchantment */
     public ItemBuilder glow() {
-        enchant(material != Material.BOW ? Enchantment.ARROW_INFINITE : Enchantment.LUCK, 10);
+        enchant(material != Material.BOW ? Enchantment.INFINITY : Enchantment.FORTUNE, 10);
         flag(ItemFlag.HIDE_ENCHANTS);
         return this;
     }

@@ -73,7 +73,7 @@ public final class Main extends JavaPlugin {
         } catch (Exception e) {}
         this.setFiles();
         this.register();
-        this.setCraftingRecipe();
+        //this.setCraftingRecipe();
 
         PREFIX = configUtils.getString(config, "PREFIX", "§7| §f§lSurvival Server §l§7x§a "); //default: §7| §f§lSurvival Server §l§7x§a
 
@@ -106,7 +106,7 @@ public final class Main extends JavaPlugin {
         log("§cDas Plugin wurde entladen.");
     }
 
-    private void setCraftingRecipe() {
+   /* private void setCraftingRecipe() {
         if (configUtils.getBoolean(config,"BundleRecipe", true)) {
             //Bundle
             ItemStack Bundle = new ItemStack(Material.BUNDLE);
@@ -129,11 +129,11 @@ public final class Main extends JavaPlugin {
             BundleRecipe.setIngredient('T', Material.TORCH);
             Bukkit.addRecipe(BundleRecipe);
         }
-    }
+    } */
 
     private void setFiles() {
         if(!config.contains("PREFIX")) config.set("PREFIX", "§7| §f§lSurvival Server §l§7x§a ");
-        if(!config.contains("lobbyCommand"))config.set("lobbyCommand", false);
+        //if(!config.contains("lobbyCommand"))config.set("lobbyCommand", false);
         if(!config.contains("tpsCommand"))config.set("tpsCommand", true);
         if(!config.contains("showPing"))config.set("showPing", false);
         if(!config.contains("Motd1"))config.set("Motd1", "Yoshi_der_Bauer ist der Beste!");
@@ -143,15 +143,15 @@ public final class Main extends JavaPlugin {
         if(!config.contains("Motd5"))config.set("Motd5", "Sound.Player.Death");
         if(!config.contains("Motd6"))config.set("Motd6", "§eHerobrian has joined the game.");
         if(!config.contains("Motd7"))config.set("Motd7", "Tot, Halbes!");
-        if(!config.contains("SpawnElytra"))config.set("SpawnElytra", true);
-        if(!config.contains("SpawnElytraBoost"))config.set("SpawnElytraBoost", 5);
+        //if(!config.contains("SpawnElytra"))config.set("SpawnElytra", true);
+        //if(!config.contains("SpawnElytraBoost"))config.set("SpawnElytraBoost", 5);
         if(!config.contains("SpawnRadius"))config.set("SpawnRadius", 45);
-        if(!config.contains("BundleRecipe"))config.set("BundleRecipe", true);
-        if(!config.contains("LightRecipe"))config.set("LightRecipe", true);
+        //if(!config.contains("BundleRecipe"))config.set("BundleRecipe", true);
+        //if(!config.contains("LightRecipe"))config.set("LightRecipe", true);
         if(!config.contains("InvisItemFrame"))config.set("InvisItemFrame", true);
         if(!config.contains("Start"))config.set("Start", false);
         if(!config.contains("CustomChat"))config.set("CustomChat", true);
-        if(!config.contains("Auto-Restart delay"))config.set("Auto-Restart delay", 120);
+        //if(!config.contains("Auto-Restart delay"))config.set("Auto-Restart delay", 120);
         if(!config.contains("DeathCounter"))config.set("DeathCounter", true);
         config.saveConfig();
         if(!status.contains("Description")) status.set("Description", "Hier werden die Statusse der Spieler gespeichert.");
@@ -208,24 +208,26 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new joinQuitListener(), this);
         pluginManager.registerEvents(new serverPing(), this);
         pluginManager.registerEvents(new gameModeListener(this), this);
-        if(configUtils.getBoolean(config,"InvisItemFrame", true)) pluginManager.registerEvents(new rightClickListener(), this);
+        //if(configUtils.getBoolean(config,"InvisItemFrame", true)) pluginManager.registerEvents(new rightClickListener(), this);
         if(configUtils.getBoolean(config,"CustomChat", false)) pluginManager.registerEvents(new chatListener(), this);
-        if(configUtils.getBoolean(config,"SpawnElytra", true)) pluginManager.registerEvents(new SpawnElytra(this), this);
+        //if(configUtils.getBoolean(config,"SpawnElytra", true)) pluginManager.registerEvents(new SpawnElytra(this), this);
         //Commands:
         Bukkit.getPluginCommand("ping").setExecutor(new pingCommand());
         Bukkit.getPluginCommand("start").setExecutor(new startCommand());
         Bukkit.getPluginCommand("zeit").setExecutor(new timeCommand());
         Bukkit.getPluginCommand("ticks").setExecutor(new tpsCommand());
         Bukkit.getPluginCommand("status").setExecutor(new statusCommand());
-        Bukkit.getPluginCommand("lobby").setExecutor(new lobbyCommand());
-        Bukkit.getPluginCommand("cam").setExecutor(new camCommand());
+        //Bukkit.getPluginCommand("lobby").setExecutor(new lobbyCommand());
+        //Bukkit.getPluginCommand("cam").setExecutor(new camCommand());
         //Scheduler:
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new tpsUtils(), 100L, 1L);
+        /*Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new tpsUtils(), 100L, 1L);
         if(configUtils.getInt(config,"Auto-Restart delay", 120) != 0) Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new restart(this), 0, 1200);
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this,new PlayerList(), 0, 20);
+         */
+
     }
 
-    public static void sendServer(Player player, String server) {
+    /*public static void sendServer(Player player, String server) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);
 
@@ -237,6 +239,6 @@ public final class Main extends JavaPlugin {
         }
         player.sendPluginMessage(Main.INSTANCE, "BungeeCord", byteArrayOutputStream.toByteArray());
         log(player.getName() + " wurde zu " + server + " gesendet!");
-    }
+    } */
 
 }

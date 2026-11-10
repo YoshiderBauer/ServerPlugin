@@ -101,7 +101,7 @@ public class joinQuitListener implements Listener {
 
         fileconfig config = new fileconfig("config.yml");
 
-        if(configUtils.getBoolean(config, "DeathCounter", true)){
+        /*if(configUtils.getBoolean(config, "DeathCounter", true)){
             ScoreboardManager manager = Bukkit.getScoreboardManager();
             Scoreboard scoreboard;
             Objective objective;
@@ -113,15 +113,19 @@ public class joinQuitListener implements Listener {
             Score score = objective.getScore(player);
             score.setScore(player.getStatistic(Statistic.DEATHS));
             player.setScoreboard(scoreboard);
-        }
+        }*/
 
         if(!config.getBoolean("Start")){
-            player.teleport(Bukkit.getWorlds().get(0).getSpawnLocation());
+            //player.teleport(Bukkit.getWorlds().get(0).getSpawnLocation());
             player.setGameMode(GameMode.ADVENTURE);
             player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 999999, 255, true, false, false));
             player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 999999, 255, true, false, false));
             player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 999999, 255, true, false, false));
-            player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 999999, 255, true, false, false));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, 999999, 255, true, false, false));
+        }else{
+            if (!player.hasPermission("op")){
+                player.setGameMode(GameMode.SURVIVAL);
+            }
         }
     }
 

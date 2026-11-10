@@ -27,7 +27,7 @@ public class lobbyCommand implements CommandExecutor, TabCompleter {
         } else {
             player.sendMessage(Main.PREFIX + "Du wirst nun weitergeleitet. ");
             player.playSound(player.getLocation(), Sound.ENTITY_SHULKER_TELEPORT, 0.2f, 1.2f);
-            Main.sendServer(player, "Lobby");
+            //Main.sendServer(player, "Lobby");
         }
         return true;
     }

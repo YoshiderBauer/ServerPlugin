@@ -43,7 +43,7 @@ public class startCommand implements CommandExecutor, TabCompleter {
             player1.removePotionEffect(PotionEffectType.WEAKNESS);
             player1.removePotionEffect(PotionEffectType.SATURATION);
             player1.removePotionEffect(PotionEffectType.REGENERATION);
-            player1.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
+            player1.removePotionEffect(PotionEffectType.RESISTANCE);
             player1.sendMessage(Main.PREFIX + "§aViel Spaß!");
         }
         player.sendMessage(Main.PREFIX + "§aDas Event wurde erfolgreich gestartet!");
