@@ -152,7 +152,7 @@ public final class Main extends JavaPlugin {
         if(!config.contains("Start"))config.set("Start", false);
         if(!config.contains("CustomChat"))config.set("CustomChat", true);
         //if(!config.contains("Auto-Restart delay"))config.set("Auto-Restart delay", 120);
-        if(!config.contains("DeathCounter"))config.set("DeathCounter", true);
+        //if(!config.contains("DeathCounter"))config.set("DeathCounter", true);
         config.saveConfig();
         if(!status.contains("Description")) status.set("Description", "Hier werden die Statusse der Spieler gespeichert.");
         status.saveConfig();
@@ -208,7 +208,7 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new joinQuitListener(), this);
         pluginManager.registerEvents(new serverPing(), this);
         pluginManager.registerEvents(new gameModeListener(this), this);
-        //if(configUtils.getBoolean(config,"InvisItemFrame", true)) pluginManager.registerEvents(new rightClickListener(), this);
+        if(configUtils.getBoolean(config,"InvisItemFrame", true)) pluginManager.registerEvents(new rightClickListener(), this);
         if(configUtils.getBoolean(config,"CustomChat", false)) pluginManager.registerEvents(new chatListener(), this);
         //if(configUtils.getBoolean(config,"SpawnElytra", true)) pluginManager.registerEvents(new SpawnElytra(this), this);
         //Commands:
