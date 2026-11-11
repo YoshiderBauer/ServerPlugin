@@ -3,10 +3,7 @@ package de.yoshi.serverplugin.listener;
 import de.yoshi.serverplugin.Main;
 import de.yoshi.serverplugin.utils.configUtils;
 import de.yoshi.serverplugin.utils.fileconfig;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
-import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -123,8 +120,12 @@ public class joinQuitListener implements Listener {
             player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 999999, 255, true, false, false));
             player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, 999999, 255, true, false, false));
         }else{
-            if (!player.hasPermission("op")){
+            if (!player.hasPermission("op") && player.getGameMode().equals(GameMode.ADVENTURE)){
                 player.setGameMode(GameMode.SURVIVAL);
+                player.removePotionEffect(PotionEffectType.WEAKNESS);
+                player.removePotionEffect(PotionEffectType.SATURATION);
+                player.removePotionEffect(PotionEffectType.REGENERATION);
+                player.removePotionEffect(PotionEffectType.RESISTANCE);
             }
         }
     }

@@ -1,7 +1,7 @@
 name: ServerPlugin
 version: '${project.version}'
 main: de.yoshi.serverplugin.Main
-api-version: 1.21.10
+api-version: 26.3
 authors: [ Yoshi_der_Bauer ]
 description: Ein Server Plugin für Survival Server!
 folia-supported: true
@@ -17,8 +17,8 @@ commands:
   uhrzeit:
     description: Damit kannst du die aktulle Uhrzeit anzeigen lassen.
     aliases: ["zeit"]
-  ticks:
-    description: Damit kannst du die Server TPS anzeigen lassen.
+  #ticks:
+  #  description: Damit kannst du die Server TPS anzeigen lassen.
   ping:
     description: Damit kannst du deinen Ping anzeigen lassen.
   status:

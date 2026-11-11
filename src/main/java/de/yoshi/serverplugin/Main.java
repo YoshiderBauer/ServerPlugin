@@ -134,7 +134,7 @@ public final class Main extends JavaPlugin {
     private void setFiles() {
         if(!config.contains("PREFIX")) config.set("PREFIX", "§7| §f§lSurvival Server §l§7x§a ");
         //if(!config.contains("lobbyCommand"))config.set("lobbyCommand", false);
-        if(!config.contains("tpsCommand"))config.set("tpsCommand", true);
+        //if(!config.contains("tpsCommand"))config.set("tpsCommand", true);
         if(!config.contains("showPing"))config.set("showPing", false);
         if(!config.contains("Motd1"))config.set("Motd1", "Yoshi_der_Bauer ist der Beste!");
         if(!config.contains("Motd2"))config.set("Motd2", "Der hackt, der hackt, der hackt!");
@@ -215,7 +215,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginCommand("ping").setExecutor(new pingCommand());
         Bukkit.getPluginCommand("start").setExecutor(new startCommand());
         Bukkit.getPluginCommand("zeit").setExecutor(new timeCommand());
-        Bukkit.getPluginCommand("ticks").setExecutor(new tpsCommand());
+        //Bukkit.getPluginCommand("ticks").setExecutor(new tpsCommand());
         Bukkit.getPluginCommand("status").setExecutor(new statusCommand());
         //Bukkit.getPluginCommand("lobby").setExecutor(new lobbyCommand());
         //Bukkit.getPluginCommand("cam").setExecutor(new camCommand());

@@ -1,5 +1,6 @@
 package de.yoshi.serverplugin.listener;
 
+import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,9 +16,14 @@ public class rightClickListener implements Listener {
         if(player.isSneaking() && entity.getType() == EntityType.ITEM_FRAME){
             event.setCancelled(true);
             ItemFrame itemFrame = (ItemFrame) entity;
-            if(itemFrame.isVisible()){
+            if(itemFrame.isVisible() && itemFrame.getItem().getType() != Material.AIR){
                 itemFrame.setVisible(false);
             } else {
+                itemFrame.setVisible(true);
+            }
+        } else if (entity.getType() == EntityType.ITEM_FRAME) {
+            ItemFrame itemFrame = (ItemFrame) entity;
+            if (itemFrame.getItem().getType() == Material.AIR){
                 itemFrame.setVisible(true);
             }
         }
